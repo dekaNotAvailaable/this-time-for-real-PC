@@ -13,6 +13,7 @@ public class EnemyTransform : MonoBehaviour
     {
         renderOne = GetComponent<MeshRenderer>();
         renderTwo = GetComponent<MeshRenderer>();
+        
     }
 
     // Update is called once per frame
