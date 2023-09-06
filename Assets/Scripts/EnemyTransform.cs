@@ -22,7 +22,17 @@ public class EnemyTransform : MonoBehaviour
         {
             transform = !transform;
         }
-        (transform ? renderOne : renderTwo).gameObject.SetActive(!transform);
+        if (transform)
+        {
+            renderOne.enabled = false;
+            renderTwo.enabled = true;
+        }
+        else
+        {
+            renderOne.enabled = true;
+            renderTwo.enabled = false;
+        }
+
     }
 
 }
