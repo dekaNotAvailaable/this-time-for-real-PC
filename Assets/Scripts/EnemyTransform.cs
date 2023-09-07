@@ -16,7 +16,6 @@ public class EnemyTransform : MonoBehaviour
         renderOne.enabled = true;
         renderTwo.enabled = false;
         renderThree.enabled = false;
-        enemyHP= FindObjectOfType<EnemyHealthSatuts>();
     }
 
     // Update is called once per frame

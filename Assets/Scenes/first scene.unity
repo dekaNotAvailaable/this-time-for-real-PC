@@ -452,6 +452,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: normal version
       objectReference: {fileID: 0}
+    - target: {fileID: 4316032181055443927, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5361719102041038701, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
         type: 3}
       propertyPath: m_Enabled
@@ -1138,6 +1143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderOne: {fileID: 1225033059}
   renderTwo: {fileID: 0}
+  renderThree: {fileID: 0}
 --- !u!1001 &1246376025
 PrefabInstance:
   m_ObjectHideFlags: 0
