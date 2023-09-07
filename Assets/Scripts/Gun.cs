@@ -40,6 +40,7 @@ public class Gun : MonoBehaviour
         if (Input.GetKey("r"))
         {
             loader = true;
+            loaded = false;
         }
         Debug.Log("loading =" + Loading);
         if (loader == true)
