@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -14,12 +16,12 @@ public class Gun : MonoBehaviour
     float loadspeed = 3f;
     float Loading;
     bool loader;
-    private void Start()
-    {
+    public Text Ammo;
 
-    }
     void Update()
     {
+
+        Ammo.text = rounds.ToString();
         firespeed();
         if (ready == true && loaded == true && Input.GetMouseButton(0))
         {
@@ -31,6 +33,7 @@ public class Gun : MonoBehaviour
         if (Input.GetKey("r"))
         {
             loader = true;
+            loaded = false;
         }
         Debug.Log("loading =" + Loading);
         if (loader == true)
@@ -51,16 +54,16 @@ public class Gun : MonoBehaviour
             loaded = false;
         }
     }
-
     void FireRay()
     {
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            hit.collider.gameObject.GetComponent<Fentanyl>()?.TakeDamage(1);
+            hit.collider.gameObject.GetComponent<EnemyMovement>()?.TakeDamage(-50);
         }
-    }
 
+    }
     void firespeed()
     {
         if (Time.time > rate + last)
