@@ -7,6 +7,7 @@ public class EnemyTransform : MonoBehaviour
 {
     public MeshRenderer renderOne;
     public MeshRenderer renderTwo;
+    public MeshRenderer renderThree;
     private bool transform;
     EnemyHealthSatuts enemyHP;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class EnemyTransform : MonoBehaviour
     {
         renderOne.enabled = true;
         renderTwo.enabled = false;
+        renderThree.enabled = false;
         enemyHP= FindObjectOfType<EnemyHealthSatuts>();
     }
 
@@ -30,6 +32,10 @@ public class EnemyTransform : MonoBehaviour
         {
             renderOne.enabled = false;
             renderTwo.enabled = true;
+        }else if (enemyHP._transformCount() == 2)
+        {
+            renderTwo.enabled = false;
+            renderThree.enabled = true;
         }
 
     }
