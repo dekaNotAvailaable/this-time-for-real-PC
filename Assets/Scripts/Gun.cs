@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            hit.collider.gameObject.GetComponent<Fentanyl>()?.TakeDamage(1);
+            hit.collider.gameObject.GetComponent<EnemyMovement>()?.TakeDamage(-50);
         }
 
     }
