@@ -11,37 +11,34 @@ public class Gun : MonoBehaviour
     bool ready = true;
     bool loaded = true;
     int rounds = 12;
-    float rate = 1/2f;
+    float rate = 1 / 2f;
     float last;
     float loadspeed = 3f;
     float Loading;
     bool loader;
     public Text Ammo;
-    private void Start()
-    {
-     
-    }
 
     void Update()
     {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
        
 =======
         Debug.DrawRay(transform.position, transform.forward, Color.blue);
 
 >>>>>>> Stashed changes
+=======
+
+>>>>>>> main
         Ammo.text = rounds.ToString();
         firespeed();
-        if (ready == true && loaded == true && Input.GetMouseButton(0)) 
-      {
-       FireRay();
-       rounds -= 1;
-       ready = false;
-       Debug.Log("fired");
-       }
-
-    
-
+        if (ready == true && loaded == true && Input.GetMouseButton(0))
+        {
+            FireRay();
+            rounds -= 1;
+            ready = false;
+            Debug.Log("fired");
+        }
         if (Input.GetKey("r"))
         {
             loader = true;
@@ -61,30 +58,21 @@ public class Gun : MonoBehaviour
             loader = false;
             Loading = 0;
         }
-
-
         if (rounds <= 0)
-            {
-                loaded = false;
-            }
-       
-
+        {
+            loaded = false;
+        }
     }
-
     void FireRay()
     {
-        
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-
             hit.collider.gameObject.GetComponent<Fentanyl>()?.TakeDamage(1);
-                
-            
         }
 
     }
-
     void firespeed()
     {
         if (Time.time > rate + last)
