@@ -12,8 +12,8 @@ public class EnemyMovement : MonoBehaviour
     Vector3 target;
     void Start()
     {
-       // player = GetComponent<CapsuleCollider>();   
-       agent = GetComponent<NavMeshAgent>();
+        // player = GetComponent<CapsuleCollider>();   
+        agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
     }
 
