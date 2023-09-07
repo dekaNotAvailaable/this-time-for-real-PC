@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -14,12 +16,15 @@ public class Gun : MonoBehaviour
     float loadspeed = 3f;
     float Loading;
     bool loader;
+    public Text Ammo;
     private void Start()
     {
 
     }
     void Update()
     {
+       
+        Ammo.text = rounds.ToString();
         firespeed();
         if (ready == true && loaded == true && Input.GetMouseButton(0))
         {

@@ -13,7 +13,8 @@ public class EnemyTransform : MonoBehaviour
     {
         renderOne = GetComponent<MeshRenderer>();
         renderTwo = GetComponent<MeshRenderer>();
-        
+        renderOne.enabled = true;
+        renderTwo.enabled = false;
     }
 
     // Update is called once per frame
@@ -23,16 +24,8 @@ public class EnemyTransform : MonoBehaviour
         {
             transform = !transform;
         }
-        if (transform)
-        {
-            renderOne.enabled = false;
-            renderTwo.enabled = true;
-        }
-        else
-        {
-            renderOne.enabled = true;
-            renderTwo.enabled = false;
-        }
+        renderOne.enabled = !transform;
+        renderTwo.enabled = transform;
 
     }
 
