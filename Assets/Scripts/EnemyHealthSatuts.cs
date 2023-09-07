@@ -9,41 +9,55 @@ public class EnemyHealthSatuts : MonoBehaviour
     public Image green;
     public Image yellow;
     public Image orange;
-    private int randomTimeTillColorChange = Random.Range(5, 10);
     private float timeFollower;
+    [SerializeField]
+    public float greenMax, greenMin,redMax,redMin,orangeMin,orangeMax,yellowMin,yellowMax;
+    private int transformCount;
+    public int _transformCount()
+    {
+        return transformCount;
+    }
 
 
     void Start()
     {
         timeFollower = Time.time;
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
         ColorChanges();
-
+        Debug.Log(transformCount);
     }
     void ColorChanges()
     {
         if (Time.time >= timeFollower + 1)
         {
+            
             timeFollower = Time.time;
-            randomTimeTillColorChange--;
-            green.fillAmount -= Random.Range(0.02f, 0.1f);
+            green.fillAmount -= Random.Range(greenMin, greenMax);
             if (green.fillAmount <= 0)
             {
-                yellow.fillAmount -= Random.Range(0.03f, 0.4f);
+                yellow.fillAmount -= Random.Range(yellowMin, yellowMax);
+                green.fillAmount = 0;
+                transformCount= 1;
             }
             if (yellow.fillAmount <= 0)
             {
-                orange.fillAmount -= Random.Range(0.06f, 0.6f);
+                orange.fillAmount -= Random.Range(orangeMin, orangeMax);
+                yellow.fillAmount = 0;
+                transformCount= 2;
             }
             if (orange.fillAmount <= 0)
             {
-                red.fillAmount -= Random.Range(0.09f, 0.65f);
+                red.fillAmount -= Random.Range(redMin, redMax);
+                orange.fillAmount = 0;
+                transformCount= 3;
+            }
+            if (red.fillAmount <= 0)
+            {
+                red.fillAmount = 0;
             }
         }
 
