@@ -24,7 +24,12 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+<<<<<<< Updated upstream
        
+=======
+        Debug.DrawRay(transform.position, transform.forward, Color.blue);
+
+>>>>>>> Stashed changes
         Ammo.text = rounds.ToString();
         firespeed();
         if (ready == true && loaded == true && Input.GetMouseButton(0)) 
