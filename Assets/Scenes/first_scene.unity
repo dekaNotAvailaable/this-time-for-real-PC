@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -197,6 +197,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: greenMax
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: greenMin
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: orangeMax
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: orangeMin
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: yellowMax
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
+        type: 3}
+      propertyPath: yellowMin
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4316032181055443927, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
         type: 3}
