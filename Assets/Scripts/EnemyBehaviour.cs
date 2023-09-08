@@ -17,8 +17,6 @@ public class EnemyBehaviour : MonoBehaviour
     public MeshRenderer renderTwo;
     public MeshRenderer renderThree;
 
-
-
     void Start()
     {
         timeFollower = Time.time;

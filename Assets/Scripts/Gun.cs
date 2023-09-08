@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            hit.collider.gameObject.GetComponent<EnemyMovement>()?.TakeDamage(-50);
+            hit.collider.gameObject.GetComponent<EnemyScript>()?.TakeDamage(-50);
         }
 
     }
