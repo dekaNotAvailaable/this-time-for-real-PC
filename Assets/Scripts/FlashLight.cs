@@ -6,11 +6,11 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class FlashLight : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Light flashLight;
+    public PartyLight flashLight;
     private bool onOffSwitch;
     void Start()
     {
-        flashLight = GetComponent<Light>();
+        flashLight = GetComponent<PartyLight>();
     }
 
     // Update is called once per frame
