@@ -17,7 +17,7 @@ public class PartyLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= timeFollower + 1f)
+        if (Time.time >= timeFollower + 0.1f)
         {
             red = Random.Range(0, 255);
             green = Random.Range(0, 255);
