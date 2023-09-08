@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 5678918561657197471}
   - component: {fileID: 8398061023351319432}
   - component: {fileID: 3496988661353242316}
-  - component: {fileID: 8049586186277234016}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -320,30 +319,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8049586186277234016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2977439421033213212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786b6804b3a6078459268c6a9cbe5319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  red: {fileID: 5392453100788194214}
-  green: {fileID: 3046817911800871183}
-  yellow: {fileID: 8650713153793394580}
-  orange: {fileID: 127318113199277064}
-  greenMax: 0.1
-  greenMin: 0.02
-  redMax: 0.69
-  redMin: 0.09
-  orangeMin: 0.06
-  orangeMax: 0.6
-  yellowMin: 0.03
-  yellowMax: 0.4
 --- !u!1 &4289556423116484762
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,9 +768,9 @@ GameObject:
   - component: {fileID: 3161477508505328658}
   - component: {fileID: 5361719102041038701}
   - component: {fileID: 5442530052561087761}
-  - component: {fileID: 3572961485976877730}
   - component: {fileID: 4316032181055443927}
   - component: {fileID: 1956271222772347163}
+  - component: {fileID: 678518376736347269}
   m_Layer: 0
   m_Name: container
   m_TagString: Untagged
@@ -893,21 +868,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3572961485976877730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8856333851743534567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5bb18c3687cd5a458c93a22454374e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderOne: {fileID: 7402857772521967302}
-  renderTwo: {fileID: 6868862038955336711}
-  renderThree: {fileID: 3247122408117195721}
 --- !u!114 &4316032181055443927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,3 +907,30 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &678518376736347269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856333851743534567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786b6804b3a6078459268c6a9cbe5319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red: {fileID: 5392453100788194214}
+  green: {fileID: 3046817911800871183}
+  yellow: {fileID: 8650713153793394580}
+  orange: {fileID: 127318113199277064}
+  greenMax: 0.05
+  greenMin: 0.01
+  redMax: 0.03
+  redMin: 0.01
+  orangeMin: 0.2
+  orangeMax: 0.6
+  yellowMin: 0.1
+  yellowMax: 0.9
+  renderOne: {fileID: 7402857772521967302}
+  renderTwo: {fileID: 6868862038955336711}
+  renderThree: {fileID: 3247122408117195721}
