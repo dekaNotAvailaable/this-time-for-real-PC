@@ -581,7 +581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6798808814560118473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -903,11 +903,10 @@ GameObject:
   - component: {fileID: 3161477508505328658}
   - component: {fileID: 5361719102041038701}
   - component: {fileID: 5442530052561087761}
-  - component: {fileID: 4316032181055443927}
   - component: {fileID: 1956271222772347163}
   - component: {fileID: 678518376736347269}
   - component: {fileID: 8749702895333999588}
-  - component: {fileID: 8648851852119647194}
+  - component: {fileID: 3197885674464886631}
   m_Layer: 0
   m_Name: container
   m_TagString: Untagged
@@ -1005,23 +1004,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4316032181055443927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8856333851743534567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d479035e5e9151d4b914fc56e46e71d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoitns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!195 &1956271222772347163
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1167,7 +1149,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8648851852119647194
+--- !u!114 &3197885674464886631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1176,11 +1158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8856333851743534567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0937715a65872c4a922b7c325b6d82b, type: 3}
+  m_Script: {fileID: 11500000, guid: 16066a029fa2607419c275011cf683ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialouge: {fileID: 8749702895333999588}
+  wayPoitns: []
+  dialouge: {fileID: 0}
   maxHearDistance: 10
   maxSeeDistance: 3
-  rb: {fileID: 2925423028262493404, guid: 3efe4fa1997d7a048a575048576ab74f, type: 3}
-  textTalk: {fileID: 1721877249151025394}
+  rb: {fileID: 0}
+  textTalk: {fileID: 0}
