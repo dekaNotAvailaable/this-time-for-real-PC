@@ -15,7 +15,8 @@ public class EnemyScript : MonoBehaviour
     public float maxSeeDistance = 3f;
     public Rigidbody rb;
     public TextMeshProUGUI textTalk;
-    private bool isTalking;
+    private bool isTalking = false;
+    private bool wasTalking = false;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -26,26 +27,34 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        UpdateDestination();
+        UpdateDestination(); // ----------> this is not ideal. Will fix. getting called every frame making the array so big.
+        wasTalking = isTalking;
         if (Vector3.Distance(transform.position, target) < 1)
         {
+
             ResetWayPointIndex();
         }
+        if (isTalking)
+        {
+            agent.SetDestination(transform.position);
+        }
+        //else if (!isTalking && wasTalking)
+        //{
+        //    StartCoroutine(ExecuteUpdateDestination());
+        //}
         EnemyAudioText();
     }
+
 
     void UpdateDestination()
     {
 
-        if (isTalking == false)
-        {
-            target = wayPoitns[wayPointIndex].position;
-            agent.SetDestination(target);
-        }
-        else
-        {
-            agent.SetDestination(transform.position);
-        }
+        // if (isTalking == false)
+        //{
+        target = wayPoitns[wayPointIndex].position;
+        agent.SetDestination(target);
+        //  }
+
     }
     void ResetWayPointIndex()
     {
@@ -61,7 +70,7 @@ public class EnemyScript : MonoBehaviour
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
         dialouge.volume = volume;
-        Debug.Log(string.Format("distance between:{0}", distance));
+        //  Debug.Log(string.Format("distance between:{0}", distance));
         if (Input.GetKeyUp(KeyCode.E))
         {
             dialouge.Play();
@@ -81,5 +90,10 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(int Amount)
     {
         enemyHealth += Amount;
+    }
+    IEnumerable ExecuteUpdateDestination() // --------------> my idea to fix the issue. 
+    {
+        yield return new WaitForSeconds(1);
+        UpdateDestination();
     }
 }
