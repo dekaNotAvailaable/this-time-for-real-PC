@@ -4,97 +4,102 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
-using System.Runtime.CompilerServices;
 
-public class Dialogue : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Dialogue : MonoBehaviour, IPointerDownHandler
 {
     public TextMeshProUGUI textComponent;
-    public string[] lines;
-    public string[] lines1;
-    public string[] lines2;
     public float textSpeed;
-    private int index;
-    private bool choiceToglle;
+    private bool choiceToggle;
+    private int dialogueIndex;
+
     public Button button1;
     public Button button2;
+
+    private string[] currentLines;
 
     // Start is called before the first frame update
     void Start()
     {
-        textComponent.text = string.Empty;
         StartDialogue();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ToggleChoice();
         if (Input.GetMouseButtonDown(1))
         {
-            if (textComponent.text == lines[index])
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
-            }
+            NextLine();
         }
     }
-    void ToggleChoice()
-    {
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            choiceToglle = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            choiceToglle = false;
-        }
-    }
+
     void StartDialogue()
     {
-        index = 0;
+        dialogueIndex = 0;
+        choiceToggle = false;
+        currentLines = choiceToggle ? GetLinesForChoice1() : GetLinesForChoice2();
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        if (dialogueIndex < currentLines.Length)
         {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            textComponent.text = string.Empty;
+            foreach (char c in currentLines[dialogueIndex].ToCharArray())
+            {
+                textComponent.text += c;
+                yield return new WaitForSeconds(textSpeed);
+            }
+            dialogueIndex++;
+        }
+        else
+        {
+
+            choiceToggle = !choiceToggle;
+            dialogueIndex = 0;
+            currentLines = choiceToggle ? GetLinesForChoice1() : GetLinesForChoice2();
+            StartCoroutine(TypeLine());
         }
     }
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (dialogueIndex >= currentLines.Length-1)
         {
-            index++;
-            textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
-        {
-            gameObject.SetActive(false);
-        }
     }
 
+    // Implement these methods to handle button clicks
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.pointerPress.Equals(button1))
+        if (eventData.pointerPress.Equals(button1.gameObject))
         {
-            Debug.Log("button 1 released");
+            // Handle button 1 click
+        }
+        else if (eventData.pointerPress.Equals(button2.gameObject))
+        {
+            // Handle button 2 click
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    // Replace these methods with your actual dialogue lines for choice 1 and choice 2
+    private string[] GetLinesForChoice1()
     {
-        if (eventData.pointerPress.Equals(button1))
+        return new string[]
         {
-            Debug.Log("button1 being pressed");
-        }
+            "Choice 1 Line 1",
+            "Choice 1 Line 2",
+        };
+    }
+
+    private string[] GetLinesForChoice2()
+    {
+        return new string[]
+        {
+            "Choice 2 Line 1",
+            "Choice 2 Line 2",
+            // Add more lines for choice 2
+        };
     }
 }
