@@ -2138,8 +2138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1499729866}
   textSpeed: 0.3
-  button1: {fileID: 0}
-  button2: {fileID: 0}
+  buttons: []
 --- !u!4 &1689391287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7124756421798626941, guid: 3efe4fa1997d7a048a575048576ab74f,
@@ -2731,8 +2730,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 2093499220}
   textSpeed: 0.1
-  button1: {fileID: 1143179348}
-  button2: {fileID: 2146993674}
+  buttons:
+  - {fileID: 1143179348}
+  - {fileID: 2146993674}
 --- !u!114 &2093499220
 MonoBehaviour:
   m_ObjectHideFlags: 0
