@@ -13,11 +13,24 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
     public Button button1;
     public Button button2;
     private string[] currentLines;
+    public Button[] buttons;
 
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int mysteryCopy = i;
+            // TODO: during C++ labs, revisit this (capture lists...)
+            // or google: stackoverflow: C# lambda capture a copy instead of reference
+            buttons[i].onClick.AddListener(() => { Button1Clicked(mysteryCopy); });
+        }
         StartDialogue();
+    }
+
+    void Button1Clicked(int buttonNumber)
+    {
+        Debug.Log("Button clicked: " + buttonNumber);
     }
 
     // Update is called once per frame
@@ -70,20 +83,6 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
             StartCoroutine(TypeLine());
         }
     }
-
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (eventData.pointerPress.Equals(button1.gameObject))
-        {
-            Debug.Log("button 1 is pressed");
-        }
-        else if (eventData.pointerPress.Equals(button2.gameObject))
-        {
-            Debug.Log("button 2 is pressed");
-        }
-    }
-
 
     private string[] GetLinesForChoice1()
     {
