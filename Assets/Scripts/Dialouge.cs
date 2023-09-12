@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour, IPointerDownHandler
@@ -11,10 +10,8 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
     public float textSpeed;
     private bool choiceToggle;
     private int dialogueIndex;
-
     public Button button1;
     public Button button2;
-
     private string[] currentLines;
 
     // Start is called before the first frame update
@@ -29,6 +26,10 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
         if (Input.GetMouseButtonDown(1))
         {
             NextLine();
+        }
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            choiceToggle = !choiceToggle;
         }
     }
 
@@ -64,26 +65,26 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
 
     void NextLine()
     {
-        if (dialogueIndex >= currentLines.Length-1)
+        if (dialogueIndex >= currentLines.Length - 1)
         {
             StartCoroutine(TypeLine());
         }
     }
 
-    // Implement these methods to handle button clicks
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.pointerPress.Equals(button1.gameObject))
         {
-            // Handle button 1 click
+            Debug.Log("button 1 is pressed");
         }
         else if (eventData.pointerPress.Equals(button2.gameObject))
         {
-            // Handle button 2 click
+            Debug.Log("button 2 is pressed");
         }
     }
 
-    // Replace these methods with your actual dialogue lines for choice 1 and choice 2
+
     private string[] GetLinesForChoice1()
     {
         return new string[]
@@ -99,7 +100,6 @@ public class Dialogue : MonoBehaviour, IPointerDownHandler
         {
             "Choice 2 Line 1",
             "Choice 2 Line 2",
-            // Add more lines for choice 2
         };
     }
 }
