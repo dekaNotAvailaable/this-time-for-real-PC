@@ -36,7 +36,6 @@ public class EnemyBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         ColorChanges();
-        Debug.Log(transformCount);
         EnemyTransform();
     }
     void ColorChanges()

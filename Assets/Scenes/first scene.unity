@@ -1376,7 +1376,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143179346}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1156979475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8856333851743534567, guid: 1ff77e3af3a51e04faac4cad2bb4c703,
@@ -1884,6 +1884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6868404448684159297, guid: 3efe4fa1997d7a048a575048576ab74f, type: 3}
+    - {fileID: 7851911761758231259, guid: 3efe4fa1997d7a048a575048576ab74f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9113573665954002099, guid: 3efe4fa1997d7a048a575048576ab74f, type: 3}
     m_AddedGameObjects:
@@ -7823,9 +7824,9 @@ RectTransform:
   - {fileID: 805491048}
   m_Father: {fileID: 2093499218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -80, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146993674

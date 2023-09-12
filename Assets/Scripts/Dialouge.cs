@@ -23,6 +23,7 @@ public class Dialogue : MonoBehaviour
             buttons[i].onClick.AddListener(() => { Button1Clicked(mysteryCopy); });
         }
         StartDialogue();
+        ToggleButtonsVisibility();
     }
 
     void Button1Clicked(int buttonNumber)
@@ -41,6 +42,7 @@ public class Dialogue : MonoBehaviour
         {
             choiceToggle = !choiceToggle;
         }
+        Debug.Log(string.Format("current line length :{0}, dialouge inex :{1}", currentLines.Length, dialogueIndex));
     }
 
     void StartDialogue()
@@ -71,10 +73,16 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(TypeLine());
         }
     }
-
+    void ToggleButtonsVisibility()
+    {
+        foreach (Button btn in buttons)
+        {
+            btn.gameObject.SetActive(false);
+        }
+    }
     void NextLine()
     {
-        if (dialogueIndex >= currentLines.Length - 1)
+        if (dialogueIndex <= currentLines.Length)
         {
             StartCoroutine(TypeLine());
         }
@@ -87,11 +95,8 @@ public class Dialogue : MonoBehaviour
             "orignal line 2",
             "orignal line 3",
             "orignal line 4",
-            "orignal line 5"
+            "orignal line 5",
         };
-
-
-
     }
     public string[] GetLinesForChoice1()
     {
@@ -99,6 +104,7 @@ public class Dialogue : MonoBehaviour
         {
             "Choice 1 Line 1",
             "Choice 1 Line 2",
+            "something else "
         };
     }
 
