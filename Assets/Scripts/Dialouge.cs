@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ActiveObject(false);
         for (int i = 0; i < buttons.Length; i++)
         {
             int mysteryCopy = i;
@@ -28,16 +29,10 @@ public class Dialogue : MonoBehaviour
         {
             btn.gameObject.SetActive(false);
         }
-        DeactiveObject();
-
     }
-    public void ActiveObject()
+    public void ActiveObject(bool activate)
     {
-        parent.gameObject.SetActive(true);
-    }
-    public void DeactiveObject()
-    {
-        parent.gameObject.SetActive(false);
+        parent.gameObject.SetActive(activate);
     }
     void Button1Clicked(int buttonNumber)
     {
@@ -71,6 +66,7 @@ public class Dialogue : MonoBehaviour
         //Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines.Length, dialogueIndex));
         //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
         ToggleButtonsVisibility();
+        // StartCoroutine(EndDialouge());
     }
 
     void StartDialogue()
@@ -79,6 +75,15 @@ public class Dialogue : MonoBehaviour
         choiceToggle = false;
         currentLines = OriginalLines();
         StartCoroutine(TypeLine());
+    }
+    IEnumerator EndDialouge()
+    {
+        if (dialogueIndex >= GetLinesForChoice1().Length || dialogueIndex >= GetLinesForChoice2().Length)
+        {
+            ActiveObject(false);
+            yield return new WaitForSeconds(1f);
+            Debug.Log("End dialouge");
+        }
     }
 
     IEnumerator TypeLine()
