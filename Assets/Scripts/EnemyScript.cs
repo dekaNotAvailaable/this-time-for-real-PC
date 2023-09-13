@@ -17,7 +17,7 @@ public class EnemyScript : MonoBehaviour
     private bool isTalking = false;
     private bool wasTalking = false;
     private EnemyBehaviour enemyBehaviour;
-    private Dialogue dialogue;
+    public Dialogue dialogue;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -25,7 +25,6 @@ public class EnemyScript : MonoBehaviour
         textTalk.enabled = false;
         isTalking = false;
         enemyBehaviour = GetComponent<EnemyBehaviour>();
-        dialogue = GetComponent<Dialogue>();
     }
 
     void Update()
@@ -42,6 +41,7 @@ public class EnemyScript : MonoBehaviour
         if (isTalking)
         {
             StopMovement();
+
         }
         //else if (!isTalking && wasTalking)
         //{
@@ -83,11 +83,11 @@ public class EnemyScript : MonoBehaviour
         {
             dialouge.Play();
             isTalking = true;
-            dialogue.parent.gameObject.SetActive(true);
+            dialogue.ActiveObject(true);
         }
         if (!dialouge.isPlaying)
         {
-            isTalking = false;
+            //isTalking = false;
         }
         if (distance <= maxSeeDistance)
         {

@@ -7792,6 +7792,7 @@ MonoBehaviour:
   maxSeeDistance: 3
   rb: {fileID: 588632441}
   textTalk: {fileID: 377156014}
+  dialogue: {fileID: 2093499219}
 --- !u!1 &2146993672
 GameObject:
   m_ObjectHideFlags: 0
