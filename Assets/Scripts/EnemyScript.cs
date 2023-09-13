@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour
 {
-    private int enemyHealth = 100;
     NavMeshAgent agent;
     int wayPointIndex;
     public Transform[] wayPoitns;
@@ -15,6 +14,11 @@ public class EnemyScript : MonoBehaviour
     public Rigidbody rb;
     public TextMeshProUGUI textTalk;
     private bool isTalking = false;
+    public bool _isTalking
+    {
+        get { return _isTalking; }
+        set { isTalking = value; }
+    }
     private bool wasTalking = false;
     private EnemyBehaviour enemyBehaviour;
     public Dialogue dialogue;
@@ -40,8 +44,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (isTalking)
         {
-            StopMovement();
-
+            MovementControl(transform.position);
         }
         //else if (!isTalking && wasTalking)
         //{
@@ -50,20 +53,17 @@ public class EnemyScript : MonoBehaviour
         EnemyAudioText();
     }
 
-    public void StopMovement()
+    public void MovementControl(Vector3 vector3)
     {
-        agent.SetDestination(transform.position);
-        Debug.Log("Stop movement");
+        agent.SetDestination(vector3);
     }
     void UpdateDestination()
     {
-
         // if (isTalking == false)
         //{
         target = wayPoitns[wayPointIndex].position;
-        agent.SetDestination(target);
+        MovementControl(target);
         //  }
-
     }
     void ResetWayPointIndex()
     {
@@ -96,10 +96,6 @@ public class EnemyScript : MonoBehaviour
         }
         else
         { textTalk.enabled = false; }
-    }
-    public void TakeDamage(int Amount)
-    {
-        enemyHealth += Amount;
     }
     IEnumerable ExecuteUpdateDestination() // --------------> my idea to fix the issue. 
     {

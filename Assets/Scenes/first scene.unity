@@ -1989,7 +1989,6 @@ GameObject:
   - component: {fileID: 1499729867}
   - component: {fileID: 1499729866}
   - component: {fileID: 1499729865}
-  - component: {fileID: 1499729868}
   m_Layer: 5
   m_Name: UI text
   m_TagString: Untagged
@@ -2125,22 +2124,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499729863}
   m_CullTransparentMesh: 1
---- !u!114 &1499729868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499729863}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055d71b968c08e548a9fcf89239e61f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 1499729866}
-  textSpeed: 0.3
-  buttons: []
-  parent: {fileID: 0}
 --- !u!4 &1689391287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7124756421798626941, guid: 3efe4fa1997d7a048a575048576ab74f,

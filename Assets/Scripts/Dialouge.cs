@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,12 @@ public class Dialogue : MonoBehaviour
     private string[] currentLines;
     public Button[] buttons;
     public GameObject parent;
+    EnemyScript enemyScript;
     // Start is called before the first frame update
     void Start()
     {
         ActiveObject(false);
+        enemyScript = FindAnyObjectByType<EnemyScript>();
         for (int i = 0; i < buttons.Length; i++)
         {
             int mysteryCopy = i;
@@ -63,10 +66,10 @@ public class Dialogue : MonoBehaviour
         {
             choiceToggle = !choiceToggle;
         }
-        //Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines.Length, dialogueIndex));
+        Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
         //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
         ToggleButtonsVisibility();
-        // StartCoroutine(EndDialouge());
+
     }
 
     void StartDialogue()
@@ -80,9 +83,10 @@ public class Dialogue : MonoBehaviour
     {
         if (dialogueIndex >= GetLinesForChoice1().Length || dialogueIndex >= GetLinesForChoice2().Length)
         {
-            ActiveObject(false);
             yield return new WaitForSeconds(1f);
-            Debug.Log("End dialouge");
+            ActiveObject(false);
+            Debug.Log("end starts");
+            enemyScript._isTalking = false;
         }
     }
 
@@ -99,26 +103,29 @@ public class Dialogue : MonoBehaviour
             }
             dialogueIndex++;
             isTyping = false;
-            Debug.Log("index plus plus");
         }
     }
     void ToggleButtonsVisibility()
     {
         if (dialogueIndex >= OriginalLines().Length)
         {
+            Debug.Log("oringal line");
             foreach (Button btn in buttons)
             {
                 btn.gameObject.SetActive(true);
             }
         }
-        else if (dialogueIndex <= GetLinesForChoice1().Length || dialogueIndex <= GetLinesForChoice2().Length)
+        if (currentLines.SequenceEqual(GetLinesForChoice1()) || currentLines.SequenceEqual(GetLinesForChoice2()))
         {
+            StartCoroutine(EndDialouge());
+            Debug.Log("current line changes");
             foreach (Button btn in buttons)
             {
                 btn.gameObject.SetActive(false);
             }
         }
     }
+
     void NextLine()
     {
         if (dialogueIndex <= currentLines.Length)
@@ -131,15 +138,14 @@ public class Dialogue : MonoBehaviour
         //   gameObject.SetActive(false);
         //}
     }
+
+
     public string[] OriginalLines()
     {
+
         return new string[]
         {
-            "orignal line 1",
-            "orignal line 2",
-            "orignal line 3",
-            "orignal line 4",
-            "orignal line 5",
+            "original line",
         };
     }
     public string[] GetLinesForChoice1()
