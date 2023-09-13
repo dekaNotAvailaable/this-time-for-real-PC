@@ -9,9 +9,10 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     private bool choiceToggle;
     private int dialogueIndex;
+    private bool isTyping;
     private string[] currentLines;
     public Button[] buttons;
-
+    public GameObject parent;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,26 +24,53 @@ public class Dialogue : MonoBehaviour
             buttons[i].onClick.AddListener(() => { Button1Clicked(mysteryCopy); });
         }
         StartDialogue();
-        ToggleButtonsVisibility();
-    }
+        foreach (Button btn in buttons)
+        {
+            btn.gameObject.SetActive(false);
+        }
+        DeactiveObject();
 
+    }
+    public void ActiveObject()
+    {
+        parent.gameObject.SetActive(true);
+    }
+    public void DeactiveObject()
+    {
+        parent.gameObject.SetActive(false);
+    }
     void Button1Clicked(int buttonNumber)
     {
-        Debug.Log("Button clicked: " + buttonNumber);
+        if (buttonNumber == 0)
+        {
+            currentLines = GetLinesForChoice1();
+            dialogueIndex = 0;
+            StartCoroutine(TypeLine());
+        }
+        else if (buttonNumber == 1)
+        {
+            Debug.Log("Button clicked: " + buttonNumber);
+            currentLines = GetLinesForChoice2();
+            dialogueIndex = 0;
+            StartCoroutine(TypeLine());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !isTyping)
         {
             NextLine();
+            Debug.Log("after done all text");
         }
         if (Input.GetKeyUp(KeyCode.T))
         {
             choiceToggle = !choiceToggle;
         }
-        Debug.Log(string.Format("current line length :{0}, dialouge inex :{1}", currentLines.Length, dialogueIndex));
+        //Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines.Length, dialogueIndex));
+        //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
+        ToggleButtonsVisibility();
     }
 
     void StartDialogue()
@@ -62,22 +90,28 @@ public class Dialogue : MonoBehaviour
             {
                 textComponent.text += c;
                 yield return new WaitForSeconds(textSpeed);
+                isTyping = true;
             }
             dialogueIndex++;
-        }
-        else
-        {
-            choiceToggle = !choiceToggle;
-            dialogueIndex = 0;
-            currentLines = choiceToggle ? GetLinesForChoice1() : GetLinesForChoice2();
-            StartCoroutine(TypeLine());
+            isTyping = false;
+            Debug.Log("index plus plus");
         }
     }
     void ToggleButtonsVisibility()
     {
-        foreach (Button btn in buttons)
+        if (dialogueIndex >= OriginalLines().Length)
         {
-            btn.gameObject.SetActive(false);
+            foreach (Button btn in buttons)
+            {
+                btn.gameObject.SetActive(true);
+            }
+        }
+        else if (dialogueIndex <= GetLinesForChoice1().Length || dialogueIndex <= GetLinesForChoice2().Length)
+        {
+            foreach (Button btn in buttons)
+            {
+                btn.gameObject.SetActive(false);
+            }
         }
     }
     void NextLine()
@@ -85,7 +119,12 @@ public class Dialogue : MonoBehaviour
         if (dialogueIndex <= currentLines.Length)
         {
             StartCoroutine(TypeLine());
+
         }
+        // else
+        // {
+        //   gameObject.SetActive(false);
+        //}
     }
     public string[] OriginalLines()
     {
@@ -104,7 +143,7 @@ public class Dialogue : MonoBehaviour
         {
             "Choice 1 Line 1",
             "Choice 1 Line 2",
-            "something else "
+            "something else ",
         };
     }
 

@@ -16,7 +16,8 @@ public class EnemyScript : MonoBehaviour
     public TextMeshProUGUI textTalk;
     private bool isTalking = false;
     private bool wasTalking = false;
-    EnemyBehaviour enemyBehaviour;
+    private EnemyBehaviour enemyBehaviour;
+    private Dialogue dialogue;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -24,6 +25,7 @@ public class EnemyScript : MonoBehaviour
         textTalk.enabled = false;
         isTalking = false;
         enemyBehaviour = GetComponent<EnemyBehaviour>();
+        dialogue = GetComponent<Dialogue>();
     }
 
     void Update()
@@ -77,11 +79,11 @@ public class EnemyScript : MonoBehaviour
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
         dialouge.volume = volume;
-        //  Debug.Log(string.Format("distance between:{0}", distance));
         if (Input.GetKeyUp(KeyCode.E))
         {
             dialouge.Play();
             isTalking = true;
+            dialogue.parent.gameObject.SetActive(true);
         }
         if (!dialouge.isPlaying)
         {
