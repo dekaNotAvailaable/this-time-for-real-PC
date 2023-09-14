@@ -22,9 +22,9 @@ public class SC_FPSController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        rb= GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
 
-        // Lock cursor
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
