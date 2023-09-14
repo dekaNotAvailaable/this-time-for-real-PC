@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     private bool hasRotated;
     public EnemyScript enemyScript;
     private bool isDead;
-    private bool hasHealed = false;
     GameManager gm;
-    public GameObject enemy;
     public bool _isDead()
     {
         return isDead;
@@ -44,21 +41,6 @@ public class EnemyBehaviour : MonoBehaviour
         EnemyTransform();
         Debug.Log(transformCount);
         TemporaryFunction();
-        StartCoroutine(EnemyDespawn());
-    }
-    private IEnumerator EnemyDespawn()
-    {
-        if (isDead)
-        {
-            if (!hasHealed)
-            {
-                yield return new WaitForSecondsRealtime(10);
-                Object.Destroy(enemy);
-                Debug.Log("despawm");
-                gm.ScoreModifier(-1);
-
-            }
-        }
     }
     void ColorChanges()
     {
@@ -101,7 +83,6 @@ public class EnemyBehaviour : MonoBehaviour
             transformCount -= 2;
             // Mathf.Clamp(transformCount, 0, 3);
             gm.ScoreModifier(1);
-            hasHealed = true;
         }
     }
     private void EnemyDie()
@@ -109,7 +90,6 @@ public class EnemyBehaviour : MonoBehaviour
         transformCount = 3;
         lastForm.transform.rotation = Quaternion.Euler(0, 0, zDegree);
         enemyScript.MovementControl(transform.position);
-
     }
     void EnemyTransform()
     {
