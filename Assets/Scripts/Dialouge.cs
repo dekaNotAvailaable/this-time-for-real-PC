@@ -36,6 +36,16 @@ public class Dialogue : MonoBehaviour
     public void ActiveObject(bool activate)
     {
         parent.gameObject.SetActive(activate);
+        if (activate == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
     void Button1Clicked(int buttonNumber)
     {
@@ -142,7 +152,6 @@ public class Dialogue : MonoBehaviour
 
     public string[] OriginalLines()
     {
-
         return new string[]
         {
             "original line",
