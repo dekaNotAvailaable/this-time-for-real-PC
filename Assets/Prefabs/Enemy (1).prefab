@@ -1053,6 +1053,9 @@ MonoBehaviour:
   renderOne: {fileID: 7402857772521967302}
   renderTwo: {fileID: 6868862038955336711}
   renderThree: {fileID: 3247122408117195721}
+  lastForm: {fileID: 8364111338816334326}
+  enemyScript: {fileID: 3197885674464886631}
+  enemy: {fileID: 426798874132768044}
 --- !u!82 &8749702895333999588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1162,8 +1165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoitns: []
-  dialouge: {fileID: 0}
+  dialouge: {fileID: 8749702895333999588}
   maxHearDistance: 10
   maxSeeDistance: 3
   rb: {fileID: 0}
-  textTalk: {fileID: 0}
+  textTalk: {fileID: 1721877249151025394}
+  dialogue: {fileID: 0}
