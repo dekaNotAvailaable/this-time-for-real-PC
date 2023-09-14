@@ -3,7 +3,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
@@ -63,7 +62,6 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(TypeLine());
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -76,7 +74,7 @@ public class Dialogue : MonoBehaviour
         {
             choiceToggle = !choiceToggle;
         }
-        Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
+        // Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
         //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
         ToggleButtonsVisibility();
 
@@ -93,9 +91,9 @@ public class Dialogue : MonoBehaviour
     {
         if (dialogueIndex >= GetLinesForChoice1().Length || dialogueIndex >= GetLinesForChoice2().Length)
         {
+            Debug.Log("end starts");
             yield return new WaitForSeconds(1f);
             ActiveObject(false);
-            Debug.Log("end starts");
             enemyScript._isTalking = false;
         }
     }
@@ -154,7 +152,7 @@ public class Dialogue : MonoBehaviour
     {
         return new string[]
         {
-            "original line",
+            "Who are you? Don't touch me",
         };
     }
     public string[] GetLinesForChoice1()
