@@ -39,14 +39,14 @@ public class Dialogue : MonoBehaviour
         parent.gameObject.SetActive(activate);
         if (activate == true)
         {
-            // Cursor.lockState = CursorLockMode.None;
-            // Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             StartDialogue();
         }
         else
         {
-            //  Cursor.lockState = CursorLockMode.Locked;
-            //  Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
     void Button1Clicked(int buttonNumber)
