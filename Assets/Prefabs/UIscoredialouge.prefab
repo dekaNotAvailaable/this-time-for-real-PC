@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 5871254756153731323}
   - component: {fileID: 4770792687022141441}
   m_Layer: 5
-  m_Name: UI(score,dialouge)
+  m_Name: UIscoredialouge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

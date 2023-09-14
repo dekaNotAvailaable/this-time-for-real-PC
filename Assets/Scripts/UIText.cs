@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public TextMeshProUGUI tmpro;
+    TextMeshProUGUI tmpro;
     GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        tmpro = GetComponent<TextMeshProUGUI>();
         gm = FindAnyObjectByType<GameManager>();
+        tmpro.color = Color.white;
     }
 
     // Update is called once per frame
