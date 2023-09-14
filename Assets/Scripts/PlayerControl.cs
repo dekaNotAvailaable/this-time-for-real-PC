@@ -25,15 +25,9 @@ public class SC_FPSController : MonoBehaviour
         rb= GetComponent<Rigidbody>();
 
         // Lock cursor
-<<<<<<< Updated upstream
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-=======
-       Cursor.lockState = CursorLockMode.Locked;
-         Cursor.visible = false;
-        }
->>>>>>> Stashed changes
 
     void Update()
     {
