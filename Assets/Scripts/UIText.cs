@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
     {
         tmpro = GetComponent<TextMeshProUGUI>();
         gm = FindAnyObjectByType<GameManager>();
+        tmpro.color = Color.white;
     }
 
     // Update is called once per frame

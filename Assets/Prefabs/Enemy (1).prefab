@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387913862888175965}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.39}
+  m_AnchoredPosition: {x: 0, y: 0.02}
   m_SizeDelta: {x: 10, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1095391607302072289
@@ -1053,6 +1053,8 @@ MonoBehaviour:
   renderOne: {fileID: 7402857772521967302}
   renderTwo: {fileID: 6868862038955336711}
   renderThree: {fileID: 3247122408117195721}
+  lastForm: {fileID: 8364111338816334326}
+  enemyScript: {fileID: 3197885674464886631}
 --- !u!82 &8749702895333999588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1162,8 +1164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoitns: []
-  dialouge: {fileID: 0}
+  dialouge: {fileID: 8749702895333999588}
   maxHearDistance: 10
   maxSeeDistance: 3
   rb: {fileID: 0}
-  textTalk: {fileID: 0}
+  textTalk: {fileID: 1721877249151025394}
+  dialogue: {fileID: 0}

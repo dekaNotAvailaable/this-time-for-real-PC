@@ -20,6 +20,8 @@ public class Dialogue : MonoBehaviour
     {
         ActiveObject(false);
         enemyScript = FindAnyObjectByType<EnemyScript>();
+        // StartDialogue();
+        currentLines = OriginalLines();
         for (int i = 0; i < buttons.Length; i++)
         {
             int mysteryCopy = i;
@@ -27,7 +29,6 @@ public class Dialogue : MonoBehaviour
             // or google: stackoverflow: C# lambda capture a copy instead of reference
             buttons[i].onClick.AddListener(() => { Button1Clicked(mysteryCopy); });
         }
-        StartDialogue();
         foreach (Button btn in buttons)
         {
             btn.gameObject.SetActive(false);
@@ -40,6 +41,7 @@ public class Dialogue : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            StartDialogue();
         }
         else
         {
@@ -51,6 +53,7 @@ public class Dialogue : MonoBehaviour
     {
         if (buttonNumber == 0)
         {
+            Debug.Log("Button clicked: " + buttonNumber);
             currentLines = GetLinesForChoice1();
             dialogueIndex = 0;
             StartCoroutine(TypeLine());
@@ -86,7 +89,7 @@ public class Dialogue : MonoBehaviour
     {
         dialogueIndex = 0;
         choiceToggle = false;
-        currentLines = OriginalLines();
+
         StartCoroutine(TypeLine());
     }
     IEnumerator EndDialouge()

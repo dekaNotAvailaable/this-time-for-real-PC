@@ -3,9 +3,16 @@ guid: fcf7219bab7fe46a1ad266029b2fee19
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
+<<<<<<< HEAD
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
+=======
+  defaultReferences:
+  - icon: {instanceID: 0}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: a186f8a87ca4f4d3aa864638ad5dfb65, type: 3}
+>>>>>>> dk
   userData: 
   assetBundleName: 
   assetBundleVariant: 
