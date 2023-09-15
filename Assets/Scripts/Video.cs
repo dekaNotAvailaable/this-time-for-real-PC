@@ -20,13 +20,29 @@ public class Video : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.isPaused)
+        if (player.url == "Assets/videos/Comic_Scene_1_Trimmed.mp4")
         {
-            for (int i = 0; i < comicButton.Length; i++)
+            Debug.Log("url of first vid");
+            if (player.isPaused)
             {
-                comicButton[i].gameObject.SetActive(true);
+                ButtonWithActiveOrNot(0, true);
+                ButtonWithActiveOrNot(1, true);
+                Debug.Log("is paused button appear");
             }
         }
+        else if (player.url == "Assets/videos/Fail_Answer_CORRECT_RESOLUTION.mp4")
+        {
+            ButtonWithActiveOrNot(0, false);
+            ButtonWithActiveOrNot(1, false);
+            ButtonWithActiveOrNot(2, true);
+            Debug.Log("is playing button disappear");
+        }
     }
-
+    void ButtonWithActiveOrNot(int i, bool value)
+    {
+        if (player.isPaused)
+        {
+            comicButton[i].gameObject.SetActive(value);
+        }
+    }
 }

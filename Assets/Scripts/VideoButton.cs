@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class VideoButton : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class VideoButton : MonoBehaviour
     {
         //  ButtonOnClick(videoPath);
     }
-    //public void ButtonOnClick(string text)
-    //{
-    //    videoPath = text;
-    //    videoScript.player.source = VideoSource.Url;
-    //    videoScript.player.url = text;
-    //}
+    public void ButtonOnClick(string text)
+    {
+        Debug.Log("button pressed video url" + videoPath);
+        videoPath = text;
+        videoScript.player.source = VideoSource.Url;
+        videoScript.player.url = text;
+    }
 }
