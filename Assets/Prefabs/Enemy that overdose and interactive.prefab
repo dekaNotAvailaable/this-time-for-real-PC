@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387913862888175965}
   m_Layer: 0
-  m_Name: Enemy (1)
+  m_Name: Enemy that overdose and interactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,6 +907,7 @@ GameObject:
   - component: {fileID: 678518376736347269}
   - component: {fileID: 8749702895333999588}
   - component: {fileID: 3197885674464886631}
+  - component: {fileID: 8187388927050403832}
   m_Layer: 0
   m_Name: container
   m_TagString: Untagged
@@ -1050,11 +1051,11 @@ MonoBehaviour:
   orangeMax: 0.6
   yellowMin: 0.1
   yellowMax: 0.9
-  renderOne: {fileID: 7402857772521967302}
-  renderTwo: {fileID: 6868862038955336711}
-  renderThree: {fileID: 3247122408117195721}
   lastForm: {fileID: 8364111338816334326}
-  enemyScript: {fileID: 3197885674464886631}
+  maxHearDistance: 10
+  maxSeeDistance: 3
+  dialogueAudio: {fileID: 8749702895333999588}
+  textTalk: {fileID: 1721877249151025394}
 --- !u!82 &8749702895333999588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1164,9 +1165,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoitns: []
-  dialouge: {fileID: 8749702895333999588}
-  maxHearDistance: 10
-  maxSeeDistance: 3
-  rb: {fileID: 0}
-  textTalk: {fileID: 1721877249151025394}
-  dialogue: {fileID: 0}
+--- !u!114 &8187388927050403832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856333851743534567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375941a9e05f369429ec08343954f867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newMaterial:
+  - {fileID: 2100000, guid: d384d6282bf63324c8889da80279d15f, type: 2}
+  - {fileID: 2100000, guid: e63e024e597f16a45a71a5028351d34e, type: 2}
+  - {fileID: 2100000, guid: acfc4aa6dbea54447902bd142f00567e, type: 2}
+  capsuleRenderer: {fileID: 7402857772521967302}
+  maxNumberOfMaterial: 3

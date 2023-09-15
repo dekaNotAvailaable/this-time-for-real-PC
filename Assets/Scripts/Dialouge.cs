@@ -14,12 +14,12 @@ public class Dialogue : MonoBehaviour
     private string[] currentLines;
     public Button[] buttons;
     public GameObject parent;
-    EnemyScript enemyScript;
+    EnemyBehaviour enemyBehaviour;
     // Start is called before the first frame update
     void Start()
     {
         ActiveObject(false);
-        enemyScript = FindAnyObjectByType<EnemyScript>();
+        enemyBehaviour = FindAnyObjectByType<EnemyBehaviour>();
         // StartDialogue();
         currentLines = OriginalLines();
         for (int i = 0; i < buttons.Length; i++)
@@ -99,7 +99,7 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSeconds(1f);
             ActiveObject(false);
             Debug.Log("end starts");
-            enemyScript._isTalking = false;
+            enemyBehaviour._isTalking = false;
         }
     }
 

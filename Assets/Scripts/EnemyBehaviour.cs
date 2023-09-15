@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,27 +12,42 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     public float greenMax, greenMin, redMax, redMin, orangeMin, orangeMax, yellowMin, yellowMax;
     private int transformCount;
-    public MeshRenderer renderOne;
-    public MeshRenderer renderTwo;
-    public MeshRenderer renderThree;
     private float zDegree;
+    //public GameObject Material;
     public GameObject lastForm;
     private bool hasRotated;
-    public EnemyScript enemyScript;
+    private EnemyScript enemyScript;
     private bool isDead;
     GameManager gm;
+    private Rigidbody rb;
+    public float maxHearDistance = 10f;
+    public float maxSeeDistance = 3f;
+    private bool isTalking = false;
+    public AudioSource dialogueAudio;
+    private Dialogue dialogueTxt;
+    public TextMeshProUGUI textTalk;
+    public bool _isTalking
+    {
+        get { return isTalking; }
+        set { isTalking = value; }
+    }
     public bool _isDead()
     {
         return isDead;
     }
+
     void Start()
     {
+        rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
-        renderOne.enabled = true;
-        renderTwo.enabled = false;
-        renderThree.enabled = false;
+        //materialOne.enabled = true;
+        //materialTwo.enabled = false;
+        //materialThree.enabled = false;
         hasRotated = false;
         gm = FindAnyObjectByType<GameManager>();
+        dialogueTxt = FindAnyObjectByType<Dialogue>();
+        enemyScript = FindAnyObjectByType<EnemyScript>();
+        textTalk.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,6 +57,15 @@ public class EnemyBehaviour : MonoBehaviour
         EnemyTransform();
         Debug.Log(transformCount);
         TemporaryFunction();
+        EnemyAudioText();
+        StopDuringTalk();
+    }
+    void StopDuringTalk()
+    {
+        if (isTalking)
+        {
+            enemyScript.MovementControl(transform.position);
+        }
     }
     void ColorChanges()
     {
@@ -95,15 +120,37 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (transformCount == 1)
         {
-            renderOne.enabled = false;
-            renderTwo.enabled = true;
-            renderThree.enabled = false;
+            // MaterialIndexReset();
+            // capsuleRenderer.material = newMaterial[materialIndex + 1];
             //isDead = false;
         }
         else if (transformCount == 2)
         {
-            renderTwo.enabled = false;
-            renderThree.enabled = true;
+            // MaterialIndexReset();
+            //  capsuleRenderer.material = newMaterial[materialIndex + 1];
         }
+    }
+    void EnemyAudioText()
+    {
+        float distance = Vector3.Distance(rb.position, transform.position);
+        float volume = 1f - (distance / maxHearDistance);
+        volume = Mathf.Clamp01(volume);
+        dialogueAudio.volume = volume;
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            dialogueAudio.Play();
+            isTalking = true;
+            dialogueTxt.ActiveObject(true);
+        }
+        if (!dialogueAudio.isPlaying)
+        {
+            //isTalking = false;
+        }
+        if (distance <= maxSeeDistance)
+        {
+            textTalk.enabled = true;
+        }
+        else
+        { textTalk.enabled = false; }
     }
 }
