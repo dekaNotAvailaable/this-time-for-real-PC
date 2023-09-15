@@ -22,25 +22,34 @@ public class Video : MonoBehaviour
     {
         if (player.url == "Assets/videos/Comic_Scene_1_Trimmed.mp4")
         {
-            Debug.Log("url of first vid");
-            if (player.isPaused)
-            {
-                ButtonWithActiveOrNot(0, true);
-                ButtonWithActiveOrNot(1, true);
-                Debug.Log("is paused button appear");
-            }
+            ButtonWithActiveOrNot(true, 0, true);
+            ButtonWithActiveOrNot(true, 1, true);
+        }
+        else if (player.url == "Assets/videos/Comic_Scene_2_with_Button.mp4")
+        {
+            ButtonWithActiveOrNot(false, 0, false);
+            ButtonWithActiveOrNot(false, 1, false);
+            ButtonWithActiveOrNot(false, 3, false);
+            ButtonWithActiveOrNot(true, 4, true);
+
         }
         else if (player.url == "Assets/videos/Fail_Answer_CORRECT_RESOLUTION.mp4")
         {
-            ButtonWithActiveOrNot(0, false);
-            ButtonWithActiveOrNot(1, false);
-            ButtonWithActiveOrNot(2, true);
-            Debug.Log("is playing button disappear");
+            ButtonWithActiveOrNot(false, 0, false);
+            ButtonWithActiveOrNot(false, 1, false);
+            ButtonWithActiveOrNot(true, 2, true);
+
+        }
+        else if (player.url == "Assets/videos/Comic_Scene_1_Yes_Removed (1).mp4")
+        {
+            ButtonWithActiveOrNot(false, 2, false);
+            ButtonWithActiveOrNot(true, 3, true);
         }
     }
-    void ButtonWithActiveOrNot(int i, bool value)
+    void ButtonWithActiveOrNot(bool isPaused, int i, bool value)
     {
-        if (player.isPaused)
+        isPaused = isPaused ? player.isPaused : player.isPlaying;
+        if (isPaused)
         {
             comicButton[i].gameObject.SetActive(value);
         }
