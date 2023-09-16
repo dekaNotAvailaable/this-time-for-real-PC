@@ -864,6 +864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy that overdose and interactive
       objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: dialogueTxt
+      value: 
+      objectReference: {fileID: 1249803701}
     - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
       propertyPath: wayPoitns.Array.size
       value: 4
@@ -1031,6 +1035,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b024f8b0401c4244b44d091caf9cbe5, type: 3}
+--- !u!114 &1249803701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7973941858992318539, guid: a0b23d41d857265469bf3347f7f9d9b0, type: 3}
+  m_PrefabInstance: {fileID: 139640990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055d71b968c08e548a9fcf89239e61f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1362400576
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class EnemyScript : MonoBehaviour
             ResetWayPointIndex();
 
         }
-
+        Debug.Log(string.Format("way poiny index : {0} , target: {1}", wayPointIndex, target));
         //else if (!isTalking && wasTalking)
         //{
         //    StartCoroutine(ExecuteUpdateDestination());
@@ -51,9 +51,9 @@ public class EnemyScript : MonoBehaviour
             wayPointIndex = 0;
         }
     }
-    IEnumerable ExecuteUpdateDestination() // --------------> my idea to fix the issue. 
+    IEnumerator ExecuteUpdateDestination() // --------------> my idea to fix the issue. 
     {
-        yield return new WaitForSeconds(1);
+        yield return null;
         UpdateDestination();
     }
 }

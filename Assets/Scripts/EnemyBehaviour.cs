@@ -24,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float maxSeeDistance = 3f;
     private bool isTalking = false;
     public AudioSource dialogueAudio;
-    private Dialogue dialogueTxt;
+    public Dialogue dialogueTxt;
     public TextMeshProUGUI textTalk;
     public bool _isTalking
     {
@@ -45,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
         //materialThree.enabled = false;
         hasRotated = false;
         gm = FindAnyObjectByType<GameManager>();
-        dialogueTxt = FindAnyObjectByType<Dialogue>();
+        // dialogueTxt = FindAnyObjectByType<Dialogue>();
         enemyScript = FindAnyObjectByType<EnemyScript>();
         textTalk.enabled = false;
     }
@@ -55,8 +55,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         ColorChanges();
         EnemyTransform();
-        Debug.Log(transformCount);
-        TemporaryFunction();
         EnemyAudioText();
         StopDuringTalk();
     }
@@ -65,6 +63,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (isTalking)
         {
             enemyScript.MovementControl(transform.position);
+            dialogueTxt.ActiveObject(true);
         }
     }
     void ColorChanges()
@@ -101,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
-    void TemporaryFunction()
+    void ReviveEnemy()
     {
         if (Input.GetKeyUp(KeyCode.F) && transformCount == 3)
         {
@@ -121,7 +120,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (transformCount == 1)
         {
             // MaterialIndexReset();
-            // capsuleRenderer.material = newMaterial[materialIndex + 1];
+            //  capsuleRenderer.material = newMaterial[materialIndex + 1];
             //isDead = false;
         }
         else if (transformCount == 2)
@@ -132,16 +131,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void EnemyAudioText()
     {
-        float distance = Vector3.Distance(rb.position, transform.position);
+        float distance = Vector3.Distance(transform.position, rb.position);
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
         dialogueAudio.volume = volume;
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            dialogueAudio.Play();
-            isTalking = true;
-            dialogueTxt.ActiveObject(true);
-        }
         if (!dialogueAudio.isPlaying)
         {
             //isTalking = false;
@@ -149,6 +142,12 @@ public class EnemyBehaviour : MonoBehaviour
         if (distance <= maxSeeDistance)
         {
             textTalk.enabled = true;
+            ReviveEnemy();
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                dialogueAudio.Play();
+                isTalking = true;
+            }
         }
         else
         { textTalk.enabled = false; }
