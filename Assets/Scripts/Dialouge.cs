@@ -15,11 +15,13 @@ public class Dialogue : MonoBehaviour
     public Button[] buttons;
     public GameObject parent;
     EnemyBehaviour enemyBehaviour;
+    EnemyScript enemyScript;
     // Start is called before the first frame update
     void Start()
     {
         ActiveObject(false);
         enemyBehaviour = FindAnyObjectByType<EnemyBehaviour>();
+        enemyScript = FindAnyObjectByType<EnemyScript>();
         // StartDialogue();
         currentLines = OriginalLines();
         for (int i = 0; i < buttons.Length; i++)
@@ -62,6 +64,7 @@ public class Dialogue : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 ActiveObject(false);
                 enemyBehaviour._isTalking = false;
+                enemyScript.UpdateDestination();
             }
         }
         else if (currentLines.SequenceEqual(GetLinesForChoice2()))
@@ -71,6 +74,7 @@ public class Dialogue : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 ActiveObject(false);
                 enemyBehaviour._isTalking = false;
+                enemyScript.UpdateDestination();
             }
         }
     }

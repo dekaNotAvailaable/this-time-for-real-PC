@@ -13,11 +13,12 @@ public class EnemyBehaviour : MonoBehaviour
     public float greenMax, greenMin, redMax, redMin, orangeMin, orangeMax, yellowMin, yellowMax;
     private int transformCount;
     private float zDegree;
-    //public GameObject Material;
     public GameObject lastForm;
     private bool hasRotated;
     private EnemyScript enemyScript;
     private bool isDead;
+    private bool hasTalked;
+    private bool hasPlayed = false;
     GameManager gm;
     private Rigidbody rb;
     public float maxHearDistance = 10f;
@@ -26,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioSource dialogueAudio;
     public Dialogue dialogueTxt;
     public TextMeshProUGUI textTalk;
+    private float distance;
     public bool _isTalking
     {
         get { return isTalking; }
@@ -35,7 +37,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         return isDead;
     }
-
     void Start()
     {
         rb = FindAnyObjectByType<Rigidbody>();
@@ -49,7 +50,6 @@ public class EnemyBehaviour : MonoBehaviour
         enemyScript = FindAnyObjectByType<EnemyScript>();
         textTalk.enabled = false;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -65,9 +65,10 @@ public class EnemyBehaviour : MonoBehaviour
             enemyScript.MovementControl(transform.position);
             dialogueTxt.ActiveObject(true);
         }
-        else
+        else if (!isTalking && !isDead)
         {
-            enemyScript.UpdateDestination();
+            //enemyScript.UpdateDestination();
+            Debug.Log("Updates the movement if not dead or talk");
         }
     }
     void ColorChanges()
@@ -76,22 +77,22 @@ public class EnemyBehaviour : MonoBehaviour
         if (Time.time >= timeFollower + 1 && !isDead)
         {
             timeFollower = Time.time;
-            green.fillAmount -= Random.Range(greenMin, greenMax);
+            green.fillAmount -= UnityEngine.Random.Range(greenMin, greenMax);
             if (green.fillAmount <= 0)
             {
-                yellow.fillAmount -= Random.Range(yellowMin, yellowMax);
+                yellow.fillAmount -= UnityEngine.Random.Range(yellowMin, yellowMax);
                 green.fillAmount = 0;
                 transformCount = 1;
             }
             if (yellow.fillAmount <= 0)
             {
-                orange.fillAmount -= Random.Range(orangeMin, orangeMax);
+                orange.fillAmount -= UnityEngine.Random.Range(orangeMin, orangeMax);
                 yellow.fillAmount = 0;
                 transformCount = 2;
             }
             if (orange.fillAmount <= 0)
             {
-                red.fillAmount -= Random.Range(redMin, redMax);
+                red.fillAmount -= UnityEngine.Random.Range(redMin, redMax);
                 orange.fillAmount = 0;
 
             }
@@ -121,6 +122,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (isDead)
         {
             enemyScript.MovementControl(transform.position);
+            // enemyScript.enabled = false;
         }
     }
     void EnemyTransform()
@@ -139,21 +141,28 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void EnemyAudioText()
     {
-        float distance = Vector3.Distance(transform.position, rb.position);
+        distance = Vector3.Distance(transform.position, rb.position);
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
         dialogueAudio.volume = volume;
-        if (!dialogueAudio.isPlaying)
+        if (!hasPlayed)
         {
-            //isTalking = false;
+            if (!dialogueAudio.isPlaying)
+            {
+                dialogueAudio.Play();
+                hasPlayed = true;
+            }
         }
+    }
+    public void InteractiveDistance()
+    {
         if (distance <= maxSeeDistance)
         {
             textTalk.enabled = true;
             ReviveEnemy();
-            if (Input.GetKeyUp(KeyCode.E))
+            if (!hasTalked)
             {
-                dialogueAudio.Play();
+                hasTalked = true;
                 isTalking = true;
             }
         }
