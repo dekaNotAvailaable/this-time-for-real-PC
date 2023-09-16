@@ -18,14 +18,13 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        UpdateDestination(); // ----------> this is not ideal. Will fix. getting called every frame making the array so big.
         wasTalking = enemyBehaviour._isTalking;
         if (Vector3.Distance(transform.position, target) < 1)
         {
             ResetWayPointIndex();
-
+            UpdateDestination(); // ----------> this is not ideal. Will fix. getting called every frame making the array so big.  
         }
-        Debug.Log(string.Format("way poiny index : {0} , target: {1}", wayPointIndex, target));
+        // Debug.Log(string.Format("way poiny index : {0} , target: {1}", wayPointIndex, target));
         //else if (!isTalking && wasTalking)
         //{
         //    StartCoroutine(ExecuteUpdateDestination());
@@ -35,7 +34,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent.SetDestination(vector3);
     }
-    void UpdateDestination()
+    public void UpdateDestination()
     {
         // if (isTalking == false)
         //{

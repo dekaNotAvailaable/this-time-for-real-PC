@@ -65,9 +65,14 @@ public class EnemyBehaviour : MonoBehaviour
             enemyScript.MovementControl(transform.position);
             dialogueTxt.ActiveObject(true);
         }
+        else
+        {
+            enemyScript.UpdateDestination();
+        }
     }
     void ColorChanges()
     {
+        Debug.Log(transformCount);
         if (Time.time >= timeFollower + 1 && !isDead)
         {
             timeFollower = Time.time;
@@ -88,7 +93,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 red.fillAmount -= Random.Range(redMin, redMax);
                 orange.fillAmount = 0;
-                //transformCount = 3;
+
             }
             if (red.fillAmount <= 0 && !hasRotated)
             {
@@ -113,7 +118,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         transformCount = 3;
         lastForm.transform.rotation = Quaternion.Euler(0, 0, zDegree);
-        enemyScript.MovementControl(transform.position);
+        if (isDead)
+        {
+            enemyScript.MovementControl(transform.position);
+        }
     }
     void EnemyTransform()
     {

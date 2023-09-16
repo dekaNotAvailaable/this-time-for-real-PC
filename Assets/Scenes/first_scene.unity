@@ -869,6 +869,10 @@ PrefabInstance:
       value: Enemy that overdose and interactive
       objectReference: {fileID: 0}
     - target: {fileID: 678518376736347269, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: lastForm
+      value: 
+      objectReference: {fileID: 2054718051}
+    - target: {fileID: 678518376736347269, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
       propertyPath: dialogueTxt
       value: 
       objectReference: {fileID: 1249803701}
@@ -1399,6 +1403,96 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c38ea02c1d1e4548948203612178c91, type: 3}
+--- !u!1001 &1409951859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.5803623
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387913862888175965, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426798874132768044, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: m_Name
+      value: Enemy that overdose and interactive (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 678518376736347269, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: lastForm
+      value: 
+      objectReference: {fileID: 1409951860}
+    - target: {fileID: 678518376736347269, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: dialogueTxt
+      value: 
+      objectReference: {fileID: 1249803701}
+    - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: wayPoitns.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: wayPoitns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1924070505}
+    - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: wayPoitns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1993381045}
+    - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: wayPoitns.Array.data[2]
+      value: 
+      objectReference: {fileID: 777397831}
+    - target: {fileID: 3197885674464886631, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+      propertyPath: wayPoitns.Array.data[3]
+      value: 
+      objectReference: {fileID: 1886196519}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+--- !u!1 &1409951860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2878194345644980879, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+  m_PrefabInstance: {fileID: 1409951859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1424373247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1968,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2054718051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2878194345644980879, guid: 1a7d13acd78fde745b8c24ba6bc0fc63, type: 3}
+  m_PrefabInstance: {fileID: 981285596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2128635666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6784,6 +6883,7 @@ SceneRoots:
   - {fileID: 1881649112}
   - {fileID: 139640990}
   - {fileID: 981285596}
+  - {fileID: 1409951859}
   - {fileID: 558444468}
   - {fileID: 772735788}
   - {fileID: 1403738471}
