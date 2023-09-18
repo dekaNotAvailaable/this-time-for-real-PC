@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Enemy.prefab.meta
+guid: f936d3044a8554f4fa47d1080fb4332b
+========
 guid: 2b024f8b0401c4244b44d091caf9cbe5
+>>>>>>>> dk:Assets/Prefabs/Floor1.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

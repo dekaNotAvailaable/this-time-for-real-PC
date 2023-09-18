@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/SampleScene.unity.meta
+guid: 5fa1a02ec8b0f7149af7f9cff700fdba
+DefaultImporter:
+========
 guid: f9ce05338af264d43b1106cc20c9d952
 PrefabImporter:
+>>>>>>>> dk:Assets/Prefabs/Wall1.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
