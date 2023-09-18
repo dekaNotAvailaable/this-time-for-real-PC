@@ -28,8 +28,21 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
 
         //  Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
+=======
+        if (Input.GetMouseButtonDown(0) && !isTyping)
+        {
+            NextLine();
+            Debug.Log("after done all text");
+        }
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            choiceToggle = !choiceToggle;
+        }
+        Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
+>>>>>>> Stashed changes
         //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
         //Debug.Log(enemyBehaviour._isTalking);
     }
