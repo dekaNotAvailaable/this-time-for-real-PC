@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour
     int wayPointIndex;
     public Transform[] wayPoitns;
     Vector3 target;
-    private bool wasTalking = false;
+    //private bool wasTalking = false;
     private EnemyDialouge enemyDialouge;
     void Start()
     {
@@ -18,8 +18,7 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        wasTalking = enemyDialouge._isTalking;
-
+        //   wasTalking = enemyDialouge._isTalking;
         if (Vector3.Distance(transform.position, target) < 1)
         {
             ResetWayPointIndex();
@@ -41,6 +40,7 @@ public class EnemyScript : MonoBehaviour
         //{
         target = wayPoitns[wayPointIndex].position;
         MovementControl(target);
+        Debug.Log("updating destination");
         //  }
     }
     void ResetWayPointIndex()

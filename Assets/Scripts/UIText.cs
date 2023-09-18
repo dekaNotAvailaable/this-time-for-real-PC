@@ -18,7 +18,7 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        objective.text = string.Format("Current Objective:{0}",);
+        objective.text = string.Format("Current Objective:{0}", gm.Objective()); ;
         tmpro.text = string.Format("Revived:{0}", gm._Score());
     }
 }

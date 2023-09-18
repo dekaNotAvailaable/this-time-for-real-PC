@@ -22,7 +22,7 @@ public class EnemyDialouge : MonoBehaviour
     private Rigidbody rb;
     private bool isTalking = false;
     private EnemyScript enemyScript;
-    public Dialogue dialogueTxt;
+    public Dialogue dialogueScript;
     public bool _isTalking
     {
         get { return isTalking; }
@@ -52,17 +52,20 @@ public class EnemyDialouge : MonoBehaviour
         // Debug.Log(distance);
         if (distance <= maxSeeDistance)
         {
-            pressToTalk.enabled = true;
+            PresstoTalk();
             enemyBehaviour.ReviveEnemy();
-            enemyBehaviour.EnemyAudioText();
-            if (Input.GetMouseButtonDown(1) && !isTyping)
+            if (!enemyBehaviour._isDead())
             {
-                NextLine();
-            }
-            if (!hasTalked)
-            {
-                hasTalked = true;
-                isTalking = true;
+                enemyBehaviour.EnemyAudioText();
+                if (Input.GetMouseButtonDown(1) && !isTyping)
+                {
+                    NextLine();
+                }
+                if (!hasTalked)
+                {
+                    hasTalked = true;
+                    isTalking = true;
+                }
             }
         }
         else
@@ -118,7 +121,11 @@ public class EnemyDialouge : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 ActiveObject(false);
                 _isTalking = false;
-                enemyScript.UpdateDestination();
+                if (!enemyBehaviour._isDead())
+                {
+                    enemyScript.UpdateDestination();
+                }
+
             }
         }
         else if (currentLines.SequenceEqual(GetLinesForChoice2()))
@@ -128,7 +135,10 @@ public class EnemyDialouge : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 ActiveObject(false);
                 _isTalking = false;
-                enemyScript.UpdateDestination();
+                if (!enemyBehaviour._isDead())
+                {
+                    enemyScript.UpdateDestination();
+                }
             }
         }
     }
@@ -154,24 +164,24 @@ public class EnemyDialouge : MonoBehaviour
     {
         if (dialogueIndex >= OriginalLines().Length)
         {
-            dialogueTxt.ButtonOnOff(true);
+            dialogueScript.ButtonOnOff(true);
         }
         if (currentLines.SequenceEqual(GetLinesForChoice1()) || currentLines.SequenceEqual(GetLinesForChoice2()))
         {
             StartCoroutine(EndDialouge());
-            dialogueTxt.ButtonOnOff(false);
+            dialogueScript.ButtonOnOff(false);
         }
         Debug.Log("toggle button visibilty");
     }
     public void ifButtonPressed()
     {
-        if (dialogueTxt._buttonNumber == 0)
+        if (dialogueScript._buttonNumber == 0)
         {
             currentLines = GetLinesForChoice1();
             dialogueIndex = 0;
             StartCoroutine(TypeLine());
         }
-        else if (dialogueTxt._buttonNumber == 1)
+        else if (dialogueScript._buttonNumber == 1)
         {
             currentLines = GetLinesForChoice2();
             dialogueIndex = 0;
@@ -190,5 +200,17 @@ public class EnemyDialouge : MonoBehaviour
         //    //enemyScript.UpdateDestination();
         //    Debug.Log("Updates the movement if not dead or talk");
         //}
+    }
+    void PresstoTalk()
+    {
+        pressToTalk.enabled = true;
+        if (enemyBehaviour._isDead())
+        {
+            if (!enemyBehaviour._isHealed())
+            {
+                pressToTalk.text = "Press H to reverse overdose";
+            }
+        }
+        else { pressToTalk.text = "Press F to talk"; }
     }
 }

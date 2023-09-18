@@ -5,10 +5,16 @@ public class GameManager : MonoBehaviour
     private int PlayerHealth = 100;
     private int PlayerStamina = 100;
     private int Score;
-    [SerializeField]
-    private string[] objectives;
+    private int objectiveIndex;
+    private int lastObjectiveIndex;
+    public string[] objectives;
     [HideInInspector]
     public string currentObjective;
+    private void Start()
+    {
+        currentObjective = objectives[objectiveIndex];
+        lastObjectiveIndex = objectiveIndex;
+    }
     public int _PlayerStamina()
     {
         return PlayerStamina;
@@ -33,11 +39,20 @@ public class GameManager : MonoBehaviour
     {
         Score += Amount;
     }
-    public void Objective(string text)
+    public void ObjectiveChanger(bool Value)
     {
-        if (currentObjective == null)
+        if (Value == true)
         {
-            currentObjective = text;
+            if (objectiveIndex >= lastObjectiveIndex)
+            {
+                objectiveIndex++;
+                lastObjectiveIndex = objectiveIndex;
+                Value = false;
+            }
         }
+    }
+    public string Objective()
+    {
+        return currentObjective;
     }
 }

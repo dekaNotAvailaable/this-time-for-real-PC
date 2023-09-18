@@ -17,6 +17,11 @@ public class EnemyBehaviour : MonoBehaviour
     private EnemyScript enemyScript;
     private bool isDead;
     private bool hasPlayed = false;
+    private bool isHealed;
+    public bool _isHealed()
+    {
+        return isHealed;
+    }
     GameManager gm;
     private Rigidbody rb;
     public float maxHearDistance = 10f;
@@ -29,12 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
-        //materialOne.enabled = true;
-        //materialTwo.enabled = false;
-        //materialThree.enabled = false;
         hasRotated = false;
         gm = FindAnyObjectByType<GameManager>();
-        // dialogueTxt = FindAnyObjectByType<Dialogue>();
         enemyScript = FindAnyObjectByType<EnemyScript>();
     }
     // Update is called once per frame
@@ -81,11 +82,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void ReviveEnemy()
     {
-        if (Input.GetKeyUp(KeyCode.F) && transformCount == 3)
+        if (Input.GetKeyUp(KeyCode.H) && transformCount == 3)
         {
             transformCount -= 2;
             // Mathf.Clamp(transformCount, 0, 3);
             gm.ScoreModifier(1);
+            isHealed = true;
         }
     }
     private void EnemyDie()
@@ -95,7 +97,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (isDead)
         {
             enemyScript.MovementControl(transform.position);
-            // enemyScript.enabled = false;
+            enemyScript.enabled = false;
+            Debug.Log("die");
         }
     }
     void EnemyTransform()

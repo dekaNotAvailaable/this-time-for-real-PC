@@ -16,7 +16,7 @@ public class SC_FPSController : MonoBehaviour
     float rotationX = 0;
     private Rigidbody rb;
     EnemyScript enemyScript;
-    EnemyBehaviour enemyBehaviour;
+    EnemyDialouge enemyDialouge;
     [HideInInspector]
     private bool canMove = true;
     public GameObject triggerBox;
@@ -25,7 +25,7 @@ public class SC_FPSController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         enemyScript = FindAnyObjectByType<EnemyScript>();
-        enemyBehaviour = FindAnyObjectByType<EnemyBehaviour>();
+        enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //rb.constraints = RigidbodyConstraints.FreezePositionY;
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,11 +33,10 @@ public class SC_FPSController : MonoBehaviour
     }
     void Update()
     {
-        if (!enemyBehaviour._isTalking)
+        if (!enemyDialouge._isTalking)
         {
             PlayerMovement();
         }
-        Debug.Log(rb.position);
     }
     private void OnTriggerEnter(Collider other)
     {
