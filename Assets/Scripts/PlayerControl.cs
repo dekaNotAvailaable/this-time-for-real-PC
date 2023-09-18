@@ -15,23 +15,41 @@ public class SC_FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
     private Rigidbody rb;
-
+    EnemyScript enemyScript;
+    EnemyBehaviour enemyBehaviour;
     [HideInInspector]
     private bool canMove = true;
-
+    public GameObject triggerBox;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
-
-        // Lock cursor
-
+        enemyScript = FindAnyObjectByType<EnemyScript>();
+        enemyBehaviour = FindAnyObjectByType<EnemyBehaviour>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        //rb.constraints = RigidbodyConstraints.FreezePositionY;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
     void Update()
     {
-
+        if (!enemyBehaviour._isTalking)
+        {
+            PlayerMovement();
+        }
+        Debug.Log(rb.position);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            GameObject.Destroy(triggerBox);
+            Debug.Log("collide");
+            enemyScript.MovementControl(rb.position);
+        }
+    }
+    void PlayerMovement()
+    {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -41,9 +59,6 @@ public class SC_FPSController : MonoBehaviour
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
-
-
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
@@ -71,5 +86,4 @@ public class SC_FPSController : MonoBehaviour
         }
 
     }
-
 }
