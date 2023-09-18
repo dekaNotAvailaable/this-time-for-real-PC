@@ -33,6 +33,23 @@ public class SC_FPSController : MonoBehaviour
     }
     void Update()
     {
+        if (!enemyBehaviour._isTalking)
+        {
+            PlayerMovement();
+        }
+        Debug.Log(rb.position);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            GameObject.Destroy(triggerBox);
+            Debug.Log("collide");
+            enemyScript.MovementControl(rb.position);
+        }
+    }
+    void PlayerMovement()
+    {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -69,14 +86,4 @@ public class SC_FPSController : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other != null)
-        {
-            GameObject.Destroy(triggerBox);
-            Debug.Log("collide");
-            enemyScript.MovementControl(rb.position);
-        }
-    }
-
 }

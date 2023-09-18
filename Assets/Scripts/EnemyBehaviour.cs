@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +28,18 @@ public class EnemyBehaviour : MonoBehaviour
     private bool isTalking = false;
     public AudioSource dialogueAudio;
     public Dialogue dialogueTxt;
-    public TextMeshProUGUI textTalk;
-    private float distance;
+    public TextMeshProUGUI pressToTalk;
+    public TextMeshProUGUI dialougeText;
+    public GameObject dialougeBox;
+    private string[] currentLines;
+    private int dialogueIndex;
+    private bool isTyping;
+    public string[] firstLines;
+    public string[] choiceFirst;
+    public string[] choiceSecond;
+    public float textSpeed;
+    private bool hasDialougeStarted;
+
     public bool _isTalking
     {
         get { return isTalking; }
@@ -39,6 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Start()
     {
+        ActiveObject(false);
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
         //materialOne.enabled = true;
@@ -48,14 +61,15 @@ public class EnemyBehaviour : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         // dialogueTxt = FindAnyObjectByType<Dialogue>();
         enemyScript = FindAnyObjectByType<EnemyScript>();
-        textTalk.enabled = false;
+        pressToTalk.enabled = false;
+        currentLines = OriginalLines();
     }
     // Update is called once per frame
     void Update()
     {
         ColorChanges();
         EnemyTransform();
-        EnemyAudioText();
+        ToggleButtonsVisibility();
         StopDuringTalk();
     }
     void StopDuringTalk()
@@ -63,7 +77,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (isTalking)
         {
             enemyScript.MovementControl(transform.position);
-            dialogueTxt.ActiveObject(true);
+            ActiveObject(true);
         }
         else if (!isTalking && !isDead)
         {
@@ -141,7 +155,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void EnemyAudioText()
     {
-        distance = Vector3.Distance(transform.position, rb.position);
+        float distance = Vector3.Distance(transform.position, rb.position);
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
         dialogueAudio.volume = volume;
@@ -156,10 +170,17 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void InteractiveDistance()
     {
+        float distance = Vector3.Distance(transform.position, rb.position);
+        // Debug.Log(distance);
         if (distance <= maxSeeDistance)
         {
-            textTalk.enabled = true;
+            pressToTalk.enabled = true;
             ReviveEnemy();
+            EnemyAudioText();
+            if (Input.GetMouseButtonDown(1) && !isTyping)
+            {
+                NextLine();
+            }
             if (!hasTalked)
             {
                 hasTalked = true;
@@ -167,6 +188,116 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
         else
-        { textTalk.enabled = false; }
+        { pressToTalk.enabled = false; }
+    }
+    public string[] OriginalLines()
+    {
+        return firstLines;
+    }
+    public string[] GetLinesForChoice1()
+    {
+        return choiceFirst;
+    }
+    public string[] GetLinesForChoice2()
+    {
+        return choiceSecond;
+    }
+    void StartDialogue()
+    {
+        dialogueIndex = 0;
+        hasDialougeStarted = true;
+        StartCoroutine(TypeLine());
+        Debug.Log("StartDialuige");
+    }
+    public void NextLine()
+    {
+        if (dialogueIndex <= currentLines.Length)
+        {
+            StartCoroutine(TypeLine());
+        }
+    }
+    IEnumerator TypeLine()
+    {
+        if (dialogueIndex < currentLines.Length)
+        {
+            dialougeText.text = string.Empty;
+            foreach (char c in currentLines[dialogueIndex].ToCharArray())
+            {
+                dialougeText.text += c;
+                yield return new WaitForSeconds(textSpeed);
+                isTyping = true;
+            }
+            dialogueIndex++;
+            isTyping = false;
+        }
+    }
+    IEnumerator EndDialouge()
+    {
+        if (currentLines.SequenceEqual(GetLinesForChoice1()))
+        {
+            if (dialogueIndex >= GetLinesForChoice1().Length)
+            {
+                yield return new WaitForSeconds(1f);
+                ActiveObject(false);
+                _isTalking = false;
+                enemyScript.UpdateDestination();
+            }
+        }
+        else if (currentLines.SequenceEqual(GetLinesForChoice2()))
+        {
+            if (dialogueIndex >= GetLinesForChoice2().Length)
+            {
+                yield return new WaitForSeconds(1f);
+                ActiveObject(false);
+                _isTalking = false;
+                enemyScript.UpdateDestination();
+            }
+        }
+    }
+    public void ActiveObject(bool activate)
+    {
+        dialougeBox.gameObject.SetActive(activate);
+        if (activate == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            if (!hasDialougeStarted)
+            {
+                StartDialogue();
+            }
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+    public void ToggleButtonsVisibility()
+    {
+        if (dialogueIndex >= OriginalLines().Length)
+        {
+            dialogueTxt.ButtonOnOff(true);
+        }
+        if (currentLines.SequenceEqual(GetLinesForChoice1()) || currentLines.SequenceEqual(GetLinesForChoice2()))
+        {
+            StartCoroutine(EndDialouge());
+            dialogueTxt.ButtonOnOff(false);
+        }
+        Debug.Log("toggle button visibilty");
+    }
+    public void ifButtonPressed()
+    {
+        if (dialogueTxt._buttonNumber == 0)
+        {
+            currentLines = GetLinesForChoice1();
+            dialogueIndex = 0;
+            StartCoroutine(TypeLine());
+        }
+        else if (dialogueTxt._buttonNumber == 1)
+        {
+            currentLines = GetLinesForChoice2();
+            dialogueIndex = 0;
+            StartCoroutine(TypeLine());
+        }
     }
 }
