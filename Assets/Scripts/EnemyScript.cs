@@ -8,17 +8,17 @@ public class EnemyScript : MonoBehaviour
     public Transform[] wayPoitns;
     Vector3 target;
     private bool wasTalking = false;
-    private EnemyBehaviour enemyBehaviour;
+    private EnemyDialouge enemyDialouge;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
-        enemyBehaviour = FindAnyObjectByType<EnemyBehaviour>();
+        enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
     }
 
     void Update()
     {
-        wasTalking = enemyBehaviour._isTalking;
+        wasTalking = enemyDialouge._isTalking;
 
         if (Vector3.Distance(transform.position, target) < 1)
         {
