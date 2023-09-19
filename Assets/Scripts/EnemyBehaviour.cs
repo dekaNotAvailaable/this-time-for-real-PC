@@ -97,8 +97,11 @@ public class EnemyBehaviour : MonoBehaviour
         if (isDead)
         {
             enemyScript.MovementControl(transform.position);
-            enemyScript.enabled = false;
-            Debug.Log("die");
+            if (enemyScript != null)
+            {
+                enemyScript.enabled = false;
+                Debug.Log("die");
+            }
         }
     }
     void EnemyTransform()

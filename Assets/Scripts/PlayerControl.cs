@@ -45,6 +45,7 @@ public class SC_FPSController : MonoBehaviour
             GameObject.Destroy(triggerBox);
             Debug.Log("collide");
             enemyScript.MovementControl(rb.position);
+
         }
     }
     void PlayerMovement()
