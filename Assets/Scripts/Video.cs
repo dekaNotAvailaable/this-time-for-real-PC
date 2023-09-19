@@ -20,7 +20,7 @@ public class Video : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.url == "Assets/videos/Comic_Scene_1_Trimmed.mp4")
+        if (player.url == "Assets/videos/Comic_Panel_1.mp4")
         {
             ButtonWithActiveOrNot(true, 0, true);
             ButtonWithActiveOrNot(true, 1, true);

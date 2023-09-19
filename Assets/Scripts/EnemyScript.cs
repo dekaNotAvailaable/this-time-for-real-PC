@@ -8,12 +8,12 @@ public class EnemyScript : MonoBehaviour
     public Transform[] wayPoitns;
     Vector3 target;
     //private bool wasTalking = false;
-    private EnemyDialouge enemyDialouge;
+    // private EnemyDialouge enemyDialouge;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
-        enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
+        //enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
     }
 
     void Update()

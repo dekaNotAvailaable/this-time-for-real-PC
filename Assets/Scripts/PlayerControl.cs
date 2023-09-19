@@ -20,6 +20,11 @@ public class SC_FPSController : MonoBehaviour
     [HideInInspector]
     private bool canMove = true;
     public GameObject triggerBox;
+
+    [HideInInspector]
+    public bool triggerNpc;
+
+    GameManager gm;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -28,24 +33,40 @@ public class SC_FPSController : MonoBehaviour
         enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //rb.constraints = RigidbodyConstraints.FreezePositionY;
+        gm = FindAnyObjectByType<GameManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
     void Update()
     {
-        if (!enemyDialouge._isTalking)
+        if (!enemyDialouge._isTalking && !triggerNpc)
         {
             PlayerMovement();
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null)
+        if (other.CompareTag("trigger"))
         {
             GameObject.Destroy(triggerBox);
+            //gm.ObjectiveChanger(true);
             Debug.Log("collide");
             enemyScript.MovementControl(rb.position);
+            triggerNpc = true;
+        }
+        else if (other.CompareTag("AidKit"))
+        {
 
+            Debug.Log("trigger");
+            // Destroy(aidKit);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("trigger"))
+        {
+
+            triggerNpc = false;
         }
     }
     void PlayerMovement()

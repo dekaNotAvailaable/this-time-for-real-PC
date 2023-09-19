@@ -43,6 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         ColorChanges();
         EnemyTransform();
+        ReviveEnemy();
     }
 
     void ColorChanges()
@@ -82,12 +83,21 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void ReviveEnemy()
     {
-        if (Input.GetKeyUp(KeyCode.H) && transformCount == 3)
+        float distance = Vector3.Distance(transform.position, rb.position);
+        if (distance <= 3)
         {
-            transformCount -= 2;
-            // Mathf.Clamp(transformCount, 0, 3);
-            gm.ScoreModifier(1);
-            isHealed = true;
+            if (Input.GetKeyUp(KeyCode.H) && transformCount == 3)
+            {
+                if (gm._naxolin >= 1)
+                {
+                    transformCount -= 2;
+                    // Mathf.Clamp(transformCount, 0, 3);
+                    gm.ScoreModifier(1);
+                    isHealed = true;
+                    gm._naxolin--;
+                    gm.ObjectiveChanger(true);
+                }
+            }
         }
     }
     private void EnemyDie()
@@ -96,7 +106,7 @@ public class EnemyBehaviour : MonoBehaviour
         lastForm.transform.rotation = Quaternion.Euler(0, 0, zDegree);
         if (isDead)
         {
-            enemyScript.MovementControl(transform.position);
+            // enemyScript.MovementControl(transform.position);
             if (enemyScript != null)
             {
                 enemyScript.enabled = false;

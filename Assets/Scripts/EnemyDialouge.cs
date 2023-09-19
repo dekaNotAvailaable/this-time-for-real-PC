@@ -18,6 +18,7 @@ public class EnemyDialouge : MonoBehaviour
     public float maxSeeDistance = 3f;
     public TextMeshProUGUI pressToTalk;
     public TextMeshProUGUI dialougeText;
+    SC_FPSController playerControl;
     private bool hasTalked;
     private Rigidbody rb;
     private bool isTalking = false;
@@ -37,6 +38,7 @@ public class EnemyDialouge : MonoBehaviour
         rb = FindAnyObjectByType<Rigidbody>();
         pressToTalk.enabled = false;
         enemyScript = GetComponent<EnemyScript>();
+        playerControl = FindAnyObjectByType<SC_FPSController>();
     }
 
     // Update is called once per frame
@@ -114,13 +116,14 @@ public class EnemyDialouge : MonoBehaviour
     }
     IEnumerator EndDialouge()
     {
-        if (currentLines.SequenceEqual(GetLinesForChoice1()))
+        if (currentLines.SequenceEqual(OriginalLines()))
         {
-            if (dialogueIndex >= GetLinesForChoice1().Length)
+            if (dialogueIndex >= OriginalLines().Length)
             {
                 yield return new WaitForSeconds(1f);
                 ActiveObject(false);
                 _isTalking = false;
+                playerControl.triggerNpc = false;
                 if (!enemyBehaviour._isDead())
                 {
                     enemyScript.UpdateDestination();
@@ -128,19 +131,20 @@ public class EnemyDialouge : MonoBehaviour
 
             }
         }
-        else if (currentLines.SequenceEqual(GetLinesForChoice2()))
-        {
-            if (dialogueIndex >= GetLinesForChoice2().Length)
-            {
-                yield return new WaitForSeconds(1f);
-                ActiveObject(false);
-                _isTalking = false;
-                if (!enemyBehaviour._isDead())
-                {
-                    enemyScript.UpdateDestination();
-                }
-            }
-        }
+        //else if (currentLines.SequenceEqual(GetLinesForChoice2()))
+        //{
+        //    if (dialogueIndex >= GetLinesForChoice2().Length)
+        //    {
+        //        yield return new WaitForSeconds(1f);
+        //        ActiveObject(false);
+        //        _isTalking = false;
+        //        playerControl.triggerNpc = false;
+        //        if (!enemyBehaviour._isDead())
+        //        {
+        //            enemyScript.UpdateDestination();
+        //        }
+        //    }
+        //}
     }
     public void ActiveObject(bool activate)
     {
@@ -164,9 +168,9 @@ public class EnemyDialouge : MonoBehaviour
     {
         if (dialogueIndex >= OriginalLines().Length)
         {
-            dialogueScript.ButtonOnOff(true);
+            //dialogueScript.ButtonOnOff(true);
         }
-        if (currentLines.SequenceEqual(GetLinesForChoice1()) || currentLines.SequenceEqual(GetLinesForChoice2()))
+        if (currentLines.SequenceEqual(OriginalLines()))
         {
             StartCoroutine(EndDialouge());
             dialogueScript.ButtonOnOff(false);
@@ -203,7 +207,10 @@ public class EnemyDialouge : MonoBehaviour
     }
     void PresstoTalk()
     {
-        pressToTalk.enabled = true;
+        if (!hasTalked)
+        {
+            pressToTalk.enabled = true;
+        }
         if (enemyBehaviour._isDead())
         {
             if (!enemyBehaviour._isHealed())

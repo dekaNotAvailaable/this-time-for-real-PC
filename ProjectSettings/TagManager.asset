@@ -8,6 +8,8 @@ TagManager:
   - 'choice1 '
   - choice2
   - questNpc
+  - AidKit
+  - trigger
   layers:
   - Default
   - TransparentFX

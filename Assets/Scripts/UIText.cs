@@ -5,6 +5,7 @@ public class UI : MonoBehaviour
 {
     TextMeshProUGUI tmpro;
     public TextMeshProUGUI objective;
+    public TextMeshProUGUI naxolinCount;
     GameManager gm;
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,7 @@ public class UI : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         objective.color = Color.white;
         tmpro.color = Color.white;
+        naxolinCount.color = Color.white;
     }
 
     // Update is called once per frame
@@ -20,5 +22,6 @@ public class UI : MonoBehaviour
     {
         objective.text = string.Format("Current Objective:{0}", gm.Objective()); ;
         tmpro.text = string.Format("Revived:{0}", gm._Score());
+        naxolinCount.text = string.Format("Naxolin:{0}", gm._naxolin);
     }
 }
