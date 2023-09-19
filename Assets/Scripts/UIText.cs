@@ -20,8 +20,8 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        objective.text = string.Format("Current Objective:{0}", gm.Objective()); ;
-        tmpro.text = string.Format("Revived:{0}", gm._Score());
-        naxolinCount.text = string.Format("Naxolin:{0}", gm._naxolin);
+        objective.text = string.Format(gm.Objective()); ;
+        tmpro.text = string.Format(gm._Score().ToString());
+        naxolinCount.text = string.Format(gm._naxolin.ToString());
     }
 }
