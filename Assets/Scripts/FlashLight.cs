@@ -14,7 +14,7 @@ public class FlashLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.V))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             onOffSwitch = !onOffSwitch;
         }

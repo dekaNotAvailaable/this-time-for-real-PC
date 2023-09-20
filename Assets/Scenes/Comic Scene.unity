@@ -223,15 +223,15 @@ RectTransform:
   m_GameObject: {fileID: 591661110}
   m_LocalRotation: {x: -0, y: -0, z: 0.0019028836, w: 0.9999982}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5525634, y: 2.727185, z: 1}
+  m_LocalScale: {x: 3.6920278, y: 3.4106176, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 809115417}
   m_Father: {fileID: 996936671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.218}
-  m_AnchorMin: {x: 0.50979376, y: 0.287}
-  m_AnchorMax: {x: 0.50979376, y: 0.287}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 7, y: 285}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591661112
@@ -287,7 +287,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Scene_1_Yes_Removed (1).mp4
+          m_StringArgument: Assets/videos/Comic_Panel_1_Yes_Disabled.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &591661113
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.14786863, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.14786863, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -488,17 +488,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626529298}
-  m_LocalRotation: {x: -0, y: -0, z: 0.036047496, w: 0.99935013}
+  m_LocalRotation: {x: -0, y: -0, z: 0.006816087, w: 0.99997675}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7032347, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 2.868588, y: 1.6202809, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 623921548}
   m_Father: {fileID: 996936671}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.781}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -160, y: 94}
+  m_AnchoredPosition: {x: -298, y: 99.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626529300
@@ -554,7 +554,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button.mp4
+          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button (2).mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &626529301
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.14786863, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.14786863, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1031,10 +1031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1141,17 +1141,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027947884}
-  m_LocalRotation: {x: -0, y: -0, z: 0.036047496, w: 0.99935013}
+  m_LocalRotation: {x: -0, y: -0, z: 0.013747088, w: 0.9999055}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7032347, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 2.9467664, y: 1.3659424, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 693559194}
   m_Father: {fileID: 996936671}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.575}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -157.5, y: 53.3}
+  m_AnchoredPosition: {x: -299.9, y: 95.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027947886
@@ -1207,7 +1207,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button.mp4
+          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button (2).mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1027947887
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.14786863, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.14786863, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1274,17 +1274,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168371913}
-  m_LocalRotation: {x: -0, y: -0, z: 0.036047496, w: 0.99935013}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0059257727, w: 0.9999824}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7900795, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 2.877667, y: 1.7485664, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1786257629}
   m_Father: {fileID: 996936671}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.679}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -97, y: 59}
+  m_AnchoredPosition: {x: -297.5, y: 78.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168371915
@@ -1340,7 +1340,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: first_scene
+          m_StringArgument: Mansionv1.1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1168371916
@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.14786863, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.14786863, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1425,7 +1425,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: Assets/videos/Comic_Panel_1.mp4
+  m_Url: Assets/videos/Comic_Panel_1 1.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1766,17 +1766,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821144306}
-  m_LocalRotation: {x: -0, y: -0, z: 0.036047496, w: 0.99935013}
+  m_LocalRotation: {x: -0, y: -0, z: 0.01695876, w: 0.99985623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7032347, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 2.9341059, y: 1.3659424, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1862339028}
   m_Father: {fileID: 996936671}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.943}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -162.2, y: 118.3}
+  m_AnchoredPosition: {x: -301.9, y: 159.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821144308
@@ -1832,7 +1832,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Fail_Answer_CORRECT_RESOLUTION.mp4
+          m_StringArgument: Assets/videos/Yes_Choice_Footage.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1821144309
@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.14786863, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.14786863, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

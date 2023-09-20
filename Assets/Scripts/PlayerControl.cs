@@ -15,7 +15,7 @@ public class SC_FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
     private Rigidbody rb;
-    EnemyScript enemyScript;
+    public EnemyScript enemyScript;
     EnemyDialouge enemyDialouge;
     [HideInInspector]
     private bool canMove = true;
@@ -26,6 +26,7 @@ public class SC_FPSController : MonoBehaviour
     public bool triggerNpc;
     GameManager gm;
     public GameObject wallPreventer;
+    public SceneChange sceneChanger;
     void Start()
     {
         if (triggerBox != null)
@@ -34,7 +35,10 @@ public class SC_FPSController : MonoBehaviour
         }
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
-        enemyScript = FindAnyObjectByType<EnemyScript>();
+        if (enemyScript == null)
+        {
+            enemyScript = FindAnyObjectByType<EnemyScript>();
+        }
         enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //rb.constraints = RigidbodyConstraints.FreezePositionY;
@@ -75,6 +79,10 @@ public class SC_FPSController : MonoBehaviour
             Vector3 destination = playerPosition + playerForward * offsetDistance;
             enemyScript.transform.position = destination;
             triggerNpc = true;
+        }
+        else if (other.CompareTag("Dealer"))
+        {
+            sceneChanger.SceneChanger("comic dealer");
         }
     }
     private void OnTriggerExit(Collider other)

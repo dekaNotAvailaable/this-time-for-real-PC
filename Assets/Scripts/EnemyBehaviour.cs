@@ -25,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rb;
     public float maxHearDistance = 10f;
     public AudioSource dialogueAudio;
+    private Animator _animation;
     public bool _isDead()
     {
         return isDead;
@@ -35,7 +36,8 @@ public class EnemyBehaviour : MonoBehaviour
         timeFollower = Time.time;
         hasRotated = false;
         gm = FindAnyObjectByType<GameManager>();
-        enemyScript = FindAnyObjectByType<EnemyScript>();
+        enemyScript = GetComponent<EnemyScript>();
+        _animation = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -95,6 +97,9 @@ public class EnemyBehaviour : MonoBehaviour
                     isHealed = true;
                     gm._naxolin--;
                     gm.ObjectiveChanger(true);
+                    isDead = false;
+                    lastForm.transform.rotation = Quaternion.Euler(0, 0, 0);
+
                 }
             }
         }
@@ -105,10 +110,13 @@ public class EnemyBehaviour : MonoBehaviour
         lastForm.transform.rotation = Quaternion.Euler(-zDegree, 0, zDegree);
         if (isDead)
         {
+            _animation.GetComponentInChildren<Animator>().enabled = false;
+            Debug.Log("dead disable animator");
             if (enemyScript != null)
             {
                 enemyScript.enabled = false;
                 Debug.Log("die");
+
             }
         }
     }

@@ -20,12 +20,12 @@ public class Video : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.url == "Assets/videos/Comic_Panel_1.mp4")
+        if (player.url == "Assets/videos/Comic_Panel_1 1.mp4")
         {
             ButtonWithActiveOrNot(true, 0, true);
             ButtonWithActiveOrNot(true, 1, true);
         }
-        else if (player.url == "Assets/videos/Comic_Scene_2_with_Button.mp4")
+        else if (player.url == "Assets/videos/Comic_Scene_2_with_Button (2).mp4")
         {
             ButtonWithActiveOrNot(false, 0, false);
             ButtonWithActiveOrNot(false, 1, false);
@@ -33,14 +33,14 @@ public class Video : MonoBehaviour
             ButtonWithActiveOrNot(true, 4, true);
 
         }
-        else if (player.url == "Assets/videos/Fail_Answer_CORRECT_RESOLUTION.mp4")
+        else if (player.url == "Assets/videos/Yes_Choice_Footage.mp4")
         {
             ButtonWithActiveOrNot(false, 0, false);
             ButtonWithActiveOrNot(false, 1, false);
             ButtonWithActiveOrNot(true, 2, true);
 
         }
-        else if (player.url == "Assets/videos/Comic_Scene_1_Yes_Removed (1).mp4")
+        else if (player.url == "Assets/videos/Comic_Panel_1_Yes_Disabled.mp4")
         {
             ButtonWithActiveOrNot(false, 2, false);
             ButtonWithActiveOrNot(true, 3, true);

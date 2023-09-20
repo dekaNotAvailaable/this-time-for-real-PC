@@ -77,6 +77,12 @@ public class EnemyDialouge : MonoBehaviour
                     Debug.Log("is talking?");
                 }
             }
+            //if (enemyBehaviour._isHealed())
+            //{
+            //    isTalking = true;
+            //    hasTalked = true;
+            //    Debug.Log("npc talk after heal");
+            //}
         }
         else
         { if (pressToTalk != null) { pressToTalk.enabled = false; } }

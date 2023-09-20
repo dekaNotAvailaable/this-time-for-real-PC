@@ -10,6 +10,7 @@ TagManager:
   - questNpc
   - AidKit
   - trigger
+  - Dealer
   layers:
   - Default
   - TransparentFX
