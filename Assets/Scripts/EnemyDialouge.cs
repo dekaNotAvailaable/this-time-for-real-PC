@@ -24,6 +24,7 @@ public class EnemyDialouge : MonoBehaviour
     private bool isTalking = false;
     private EnemyScript enemyScript;
     public Dialogue dialogueScript;
+    private Animator animator;
     public bool _isTalking
     {
         get { return isTalking; }
@@ -36,7 +37,10 @@ public class EnemyDialouge : MonoBehaviour
         currentLines = OriginalLines();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         rb = FindAnyObjectByType<Rigidbody>();
-        pressToTalk.enabled = false;
+        if (pressToTalk != null)
+        {
+            pressToTalk.enabled = false;
+        }
         enemyScript = GetComponent<EnemyScript>();
         playerControl = FindAnyObjectByType<SC_FPSController>();
     }
@@ -51,27 +55,31 @@ public class EnemyDialouge : MonoBehaviour
     public void InteractiveDistance()
     {
         float distance = Vector3.Distance(transform.position, rb.position);
-        // Debug.Log(distance);
+        //  Debug.Log(distance);
         if (distance <= maxSeeDistance)
         {
+            Debug.Log("distance check");
             PresstoTalk();
             enemyBehaviour.ReviveEnemy();
             if (!enemyBehaviour._isDead())
             {
+                Debug.Log("is dead?");
                 enemyBehaviour.EnemyAudioText();
-                if (Input.GetMouseButtonDown(1) && !isTyping)
+                if (Input.GetMouseButtonUp(1) && !isTyping)
                 {
                     NextLine();
+                    Debug.Log("next line");
                 }
                 if (!hasTalked)
                 {
                     hasTalked = true;
                     isTalking = true;
+                    Debug.Log("is talking?");
                 }
             }
         }
         else
-        { pressToTalk.enabled = false; }
+        { if (pressToTalk != null) { pressToTalk.enabled = false; } }
     }
     public string[] OriginalLines()
     {
@@ -131,20 +139,6 @@ public class EnemyDialouge : MonoBehaviour
 
             }
         }
-        //else if (currentLines.SequenceEqual(GetLinesForChoice2()))
-        //{
-        //    if (dialogueIndex >= GetLinesForChoice2().Length)
-        //    {
-        //        yield return new WaitForSeconds(1f);
-        //        ActiveObject(false);
-        //        _isTalking = false;
-        //        playerControl.triggerNpc = false;
-        //        if (!enemyBehaviour._isDead())
-        //        {
-        //            enemyScript.UpdateDestination();
-        //        }
-        //    }
-        //}
     }
     public void ActiveObject(bool activate)
     {
@@ -173,7 +167,10 @@ public class EnemyDialouge : MonoBehaviour
         if (currentLines.SequenceEqual(OriginalLines()))
         {
             StartCoroutine(EndDialouge());
-            dialogueScript.ButtonOnOff(false);
+            if (dialogueScript != null)
+            {
+                dialogueScript.ButtonOnOff(false);
+            }
         }
         Debug.Log("toggle button visibilty");
     }
@@ -198,26 +195,34 @@ public class EnemyDialouge : MonoBehaviour
         {
             enemyScript.MovementControl(transform.position);
             ActiveObject(true);
+            // animator.speed = 0;
         }
-        //else if (!isTalking && !isDead)
-        //{
-        //    //enemyScript.UpdateDestination();
-        //    Debug.Log("Updates the movement if not dead or talk");
-        //}
+        else if (!isTalking && !enemyBehaviour._isDead())
+        {
+            //    //enemyScript.UpdateDestination();
+            //    Debug.Log("Updates the movement if not dead or talk");
+            // animator.speed = 1f;
+        }
     }
     void PresstoTalk()
     {
         if (!hasTalked)
         {
-            pressToTalk.enabled = true;
+            if (pressToTalk != null)
+            {
+                pressToTalk.enabled = true;
+            }
         }
         if (enemyBehaviour._isDead())
         {
             if (!enemyBehaviour._isHealed())
             {
-                pressToTalk.text = "Press H to reverse overdose";
+                if (pressToTalk != null)
+                {
+                    pressToTalk.text = "Press H to reverse overdose";
+                }
             }
         }
-        else { pressToTalk.text = "Press F to talk"; }
+        else { if (pressToTalk != null) { pressToTalk.text = "Press F to talk"; } }
     }
 }

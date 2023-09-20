@@ -25,13 +25,6 @@ public class Dialogue : MonoBehaviour
         }
         ButtonOnOff(false);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        //  Debug.Log(string.Format("text :{0}, dialouge inex :{1}", currentLines, dialogueIndex));
-        //Debug.Log(string.Format(":{0}, :{1}", textComponent.text, currentLines[dialogueIndex]));
-        //Debug.Log(enemyBehaviour._isTalking);
-    }
     public void ButtonOnOff(bool value)
     {
         foreach (Button btn in buttons)

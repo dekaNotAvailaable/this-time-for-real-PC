@@ -24,10 +24,14 @@ public class SC_FPSController : MonoBehaviour
     private float offsetDistance = 2f;
     [HideInInspector]
     public bool triggerNpc;
-
     GameManager gm;
+    public GameObject wallPreventer;
     void Start()
     {
+        if (triggerBox != null)
+        {
+            triggerBox.SetActive(false);
+        }
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         enemyScript = FindAnyObjectByType<EnemyScript>();
@@ -44,6 +48,20 @@ public class SC_FPSController : MonoBehaviour
         {
             PlayerMovement();
         }
+        if (triggerBox != null)
+        {
+            if (gm._Score() == 1)
+            {
+                triggerBox.SetActive(true);
+            }
+        }
+        if (wallPreventer != null)
+        {
+            if (gm._Score() >= 2)
+            {
+                wallPreventer.SetActive(false);
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -52,20 +70,11 @@ public class SC_FPSController : MonoBehaviour
             GameObject.Destroy(triggerBox);
             //gm.ObjectiveChanger(true);
             Debug.Log("collide");
-            Vector3 playerPosition = rb.position; // Get the player's position
+            Vector3 playerPosition = rb.position;
             Vector3 playerForward = transform.forward;
-            // Get the player's forward direction
-
-            // Calculate the destination point in front of the player (adjust the offset as needed)
             Vector3 destination = playerPosition + playerForward * offsetDistance;
-            enemyScript.MovementControl(destination);
+            enemyScript.transform.position = destination;
             triggerNpc = true;
-        }
-        else if (other.CompareTag("AidKit"))
-        {
-
-            Debug.Log("trigger");
-            // Destroy(aidKit);
         }
     }
     private void OnTriggerExit(Collider other)

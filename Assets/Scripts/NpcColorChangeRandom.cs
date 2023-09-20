@@ -14,7 +14,13 @@ public class NpcColorChangeRandom : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         materialIndex = Random.Range(0, maxNumberOfMaterial + 1);
         // capsuleRenderer.material = newMaterial[materialIndex];
-        meshRenderer.material = newMaterial[materialIndex];
+        if (newMaterial != null)
+        {
+            if (meshRenderer != null)
+            {
+                meshRenderer.material = newMaterial[materialIndex];
+            }
+        }
     }
 
     // Update is called once per frame

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,11 +23,26 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public string currentObjective;
     private Rigidbody rb;
+    private bool isChanged;
     private void Start()
     {
         currentObjective = objectives[objectiveIndex];
         lastObjectiveIndex = objectiveIndex;
         rb = FindAnyObjectByType<Rigidbody>();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Mansionv1.1 speed run")
+        {
+            naxolin = 20;
+        }
+    }
+    private void Update()
+    {
+        //if (naxolin >= 1)
+        //{
+        //    ObjectiveChanger(true);
+        //    isChanged = true;
+        //}
     }
     public int _PlayerStamina()
     {

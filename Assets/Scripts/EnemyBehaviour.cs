@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public Image red;
-    public Image green;
-    public Image yellow;
-    public Image orange;
+    private float redValue = 100f;
+    private float greenValue = 100f;
+    private float yellowValue = 100f;
+    private float orangeValue = 100f;
     private float timeFollower;
     [SerializeField]
     public float greenMax, greenMin, redMax, redMin, orangeMin, orangeMax, yellowMin, yellowMax;
@@ -48,33 +47,33 @@ public class EnemyBehaviour : MonoBehaviour
 
     void ColorChanges()
     {
-        Debug.Log(transformCount);
+
         if (Time.time >= timeFollower + 1 && !isDead)
         {
             timeFollower = Time.time;
-            green.fillAmount -= UnityEngine.Random.Range(greenMin, greenMax);
-            if (green.fillAmount <= 0)
+            greenValue -= UnityEngine.Random.Range(greenMin, greenMax);
+            if (greenValue <= 0)
             {
-                yellow.fillAmount -= UnityEngine.Random.Range(yellowMin, yellowMax);
-                green.fillAmount = 0;
+                yellowValue -= UnityEngine.Random.Range(yellowMin, yellowMax);
+                greenValue = 0;
                 transformCount = 1;
             }
-            if (yellow.fillAmount <= 0)
+            if (yellowValue <= 0)
             {
-                orange.fillAmount -= UnityEngine.Random.Range(orangeMin, orangeMax);
-                yellow.fillAmount = 0;
+                orangeValue -= UnityEngine.Random.Range(orangeMin, orangeMax);
+                yellowValue = 0;
                 transformCount = 2;
             }
-            if (orange.fillAmount <= 0)
+            if (orangeValue <= 0)
             {
-                red.fillAmount -= UnityEngine.Random.Range(redMin, redMax);
-                orange.fillAmount = 0;
+                redValue -= UnityEngine.Random.Range(redMin, redMax);
+                orangeValue = 0;
 
             }
-            if (red.fillAmount <= 0 && !hasRotated)
+            if (redValue <= 0 && !hasRotated)
             {
                 isDead = true;
-                red.fillAmount = 1;
+                redValue = 1;
                 hasRotated = true;
                 zDegree = 90;
                 EnemyDie();
@@ -103,10 +102,9 @@ public class EnemyBehaviour : MonoBehaviour
     private void EnemyDie()
     {
         transformCount = 3;
-        lastForm.transform.rotation = Quaternion.Euler(0, 0, zDegree);
+        lastForm.transform.rotation = Quaternion.Euler(-zDegree, 0, zDegree);
         if (isDead)
         {
-            // enemyScript.MovementControl(transform.position);
             if (enemyScript != null)
             {
                 enemyScript.enabled = false;

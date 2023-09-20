@@ -8,11 +8,18 @@ public class FirstAid : MonoBehaviour
     bool text = false;
     bool flopping = false;
     GameManager gm;
+    private bool objective;
     // Start is called before the first frame update
     void Start()
     {
-        tutorialaidkit.SetActive(false);
-        aidsearch.SetActive(false);
+        if (tutorialaidkit != null)
+        {
+            tutorialaidkit.SetActive(false);
+        }
+        if (aidsearch != null)
+        {
+            aidsearch.SetActive(false);
+        }
         gm = FindAnyObjectByType<GameManager>();
     }
 
@@ -25,7 +32,7 @@ public class FirstAid : MonoBehaviour
         }
         else
         {
-            aidsearch.SetActive(false);
+            //aidsearch.SetActive(false);
         }
         if (text == true && Input.GetKeyUp("e"))
         {
@@ -39,13 +46,18 @@ public class FirstAid : MonoBehaviour
             //saidsearch.SetActive(false);
         }
 
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("AidKit"))
         {
             text = true;
+
         }
         else
         {
@@ -54,15 +66,20 @@ public class FirstAid : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("AidKit"))
+        if (aidKit != null)
         {
-            text = false;
-            for (int i = 0; i < 2; i++)
+            if (other.CompareTag("AidKit"))
             {
-                gm._naxolin += i;
+                text = false;
+                gm._naxolin = 2;
+                Destroy(aidKit);
+                Debug.Log("aidkit collide exit");
+                if (!objective)
+                {
+                    gm.ObjectiveChanger(true);
+                    objective = true;
+                }
             }
-            gm.ObjectiveChanger(true);
-            Destroy(aidKit);
         }
     }
 }
