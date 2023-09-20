@@ -20,7 +20,8 @@ public class SC_FPSController : MonoBehaviour
     [HideInInspector]
     private bool canMove = true;
     public GameObject triggerBox;
-
+    [SerializeField]
+    private float offsetDistance = 2f;
     [HideInInspector]
     public bool triggerNpc;
 
@@ -51,7 +52,13 @@ public class SC_FPSController : MonoBehaviour
             GameObject.Destroy(triggerBox);
             //gm.ObjectiveChanger(true);
             Debug.Log("collide");
-            enemyScript.MovementControl(rb.position);
+            Vector3 playerPosition = rb.position; // Get the player's position
+            Vector3 playerForward = transform.forward;
+            // Get the player's forward direction
+
+            // Calculate the destination point in front of the player (adjust the offset as needed)
+            Vector3 destination = playerPosition + playerForward * offsetDistance;
+            enemyScript.MovementControl(destination);
             triggerNpc = true;
         }
         else if (other.CompareTag("AidKit"))

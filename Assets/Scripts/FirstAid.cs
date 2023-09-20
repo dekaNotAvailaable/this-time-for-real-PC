@@ -57,7 +57,10 @@ public class FirstAid : MonoBehaviour
         if (other.CompareTag("AidKit"))
         {
             text = false;
-            gm._naxolin += 2;
+            for (int i = 0; i < 2; i++)
+            {
+                gm._naxolin += i;
+            }
             gm.ObjectiveChanger(true);
             Destroy(aidKit);
         }
