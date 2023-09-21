@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     private bool isDead;
     private bool hasPlayed = false;
     private bool isHealed;
+    NavMeshAgent _navMeshAgent;
     public bool _isHealed()
     {
         return isHealed;
@@ -32,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Start()
     {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
         hasRotated = false;
@@ -114,7 +118,7 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("dead disable animator");
             if (enemyScript != null)
             {
-                enemyScript.enabled = false;
+                gameObject.GetComponent<NavMeshAgent>().enabled = false;
                 Debug.Log("die");
 
             }

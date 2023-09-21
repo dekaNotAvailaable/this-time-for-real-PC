@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         rb = FindAnyObjectByType<Rigidbody>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "Mansionv1.1 speed run")
+        if (sceneName == "Mansionv1.2")
         {
             naxolin = 20;
         }

@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/comic dealer.unity
     guid: cb284e4c792234c409516bb3d76cd9a9
+  - enabled: 1
+    path: Assets/Scenes/Mansionv1.2.unity
+    guid: fb4dc815c09675b4fb1189a33e8cedee
   - enabled: 0
     path: Assets/Scenes/SampleScene dk old.unity
     guid: 99c9720ab356a0642a771bea13969a05
