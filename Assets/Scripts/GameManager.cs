@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public string currentObjective;
     private Rigidbody rb;
     private bool isChanged;
+    public AudioSource BGM;
     private void Start()
     {
         currentObjective = objectives[objectiveIndex];
@@ -31,9 +32,24 @@ public class GameManager : MonoBehaviour
         rb = FindAnyObjectByType<Rigidbody>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "Mansionv1.1 speed run")
+        if (sceneName == "Mansion1.1")
         {
-            naxolin = 20;
+            if (BGM != null)
+            {
+                BGM.Play();
+                BGM.loop = true;
+                BGM.volume = 0.5f;
+            }
+        }
+        else if (sceneName == "Mansionv1.2")
+        {
+            if (BGM != null)
+            {
+                naxolin = 20;
+                BGM.Play();
+                BGM.loop = true;
+                BGM.volume = 0.5f;
+            }
         }
     }
     private void Update()
