@@ -29,13 +29,6 @@ public class FirstAid : MonoBehaviour
         if (text == true)
         {
             aidsearch.SetActive(true);
-        }
-        else
-        {
-            //aidsearch.SetActive(false);
-        }
-        if (text == true)
-        {
             if (Input.GetKeyUp(KeyCode.E))
             {
                 flopping = !flopping;
@@ -44,25 +37,19 @@ public class FirstAid : MonoBehaviour
         if (flopping == true)
         {
             tutorialaidkit.SetActive(true);
+            gm._naxolin = 2;
             //saidsearch.SetActive(false);
         }
         else
         {
             tutorialaidkit.SetActive(false);
         }
-
-
-
-
     }
-
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag("AidKit"))
         {
             text = true;
-
         }
         else
         {
@@ -76,8 +63,14 @@ public class FirstAid : MonoBehaviour
             if (other.CompareTag("AidKit"))
             {
                 text = false;
-                gm._naxolin = 2;
-                Destroy(aidKit);
+                if (gm._naxolin >= 2)
+                {
+                    Destroy(aidKit);
+                }
+                if (aidKit == null)
+                {
+                    tutorialaidkit.SetActive(false);
+                }
                 Debug.Log("aidkit collide exit");
                 if (!objective)
                 {

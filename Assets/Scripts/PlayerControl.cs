@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
+
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Rigidbody))]
 
@@ -15,8 +17,7 @@ public class SC_FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
     private Rigidbody rb;
-    public EnemyScript enemyScript;
-    EnemyDialouge enemyDialouge;
+    //public EnemyScript enemyScript;
     [HideInInspector]
     private bool canMove = true;
     public GameObject triggerBox;
@@ -27,6 +28,8 @@ public class SC_FPSController : MonoBehaviour
     GameManager gm;
     public GameObject wallPreventer;
     public SceneChange sceneChanger;
+    public Transform enemyToControl;
+    private NavMeshAgent enemyNavMeshAgent;
     void Start()
     {
         if (triggerBox != null)
@@ -35,20 +38,17 @@ public class SC_FPSController : MonoBehaviour
         }
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
-        if (enemyScript == null)
-        {
-            enemyScript = FindAnyObjectByType<EnemyScript>();
-        }
-        enemyDialouge = FindAnyObjectByType<EnemyDialouge>();
+
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         //rb.constraints = RigidbodyConstraints.FreezePositionY;
         gm = FindAnyObjectByType<GameManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        enemyNavMeshAgent = enemyToControl.GetComponent<NavMeshAgent>();
     }
     void Update()
     {
-        if (!enemyDialouge._isTalking && !triggerNpc)
+        if (!triggerNpc)
         {
             PlayerMovement();
         }
@@ -74,10 +74,8 @@ public class SC_FPSController : MonoBehaviour
             GameObject.Destroy(triggerBox);
             //gm.ObjectiveChanger(true);
             Debug.Log("collide");
-            Vector3 playerPosition = rb.position;
-            Vector3 playerForward = transform.forward;
-            Vector3 destination = playerPosition + playerForward * offsetDistance;
-            enemyScript.transform.position = destination;
+            Vector3 desiredPosition = transform.position + transform.forward * offsetDistance;
+            enemyNavMeshAgent.SetDestination(desiredPosition);
             triggerNpc = true;
         }
         else if (other.CompareTag("Dealer"))
@@ -89,7 +87,6 @@ public class SC_FPSController : MonoBehaviour
     {
         if (other.CompareTag("trigger"))
         {
-
             triggerNpc = false;
         }
     }

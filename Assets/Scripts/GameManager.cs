@@ -3,6 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gmInstance { get; private set; }
+
+    // Add your GameManager variables and methods here
+
+    private void Awake()
+    {
+        // Ensure there's only one instance of GameManager
+        if (gmInstance == null)
+        {
+            gmInstance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keep GameManager between scenes
+        }
+        else
+        {
+            // If another instance exists, destroy this one
+            Destroy(gameObject);
+        }
+    }
     private int PlayerHealth = 100;
     private int PlayerStamina = 100;
     private int Score;
@@ -19,7 +37,6 @@ public class GameManager : MonoBehaviour
         get { return naxolin; }
         set { naxolin = value; }
     }
-    private float aidKidDetectionRange = 5;
     [HideInInspector]
     public string currentObjective;
     private Rigidbody rb;
@@ -43,9 +60,9 @@ public class GameManager : MonoBehaviour
         }
         else if (sceneName == "Mansionv1.2")
         {
+            naxolin = 20;
             if (BGM != null)
             {
-                naxolin = 20;
                 BGM.Play();
                 BGM.loop = true;
                 BGM.volume = 0.5f;

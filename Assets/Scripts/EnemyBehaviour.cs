@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -48,12 +47,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         ColorChanges();
         EnemyTransform();
-        ReviveEnemy();
     }
 
     void ColorChanges()
     {
-
         if (Time.time >= timeFollower + 1 && !isDead)
         {
             timeFollower = Time.time;
@@ -74,7 +71,6 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 redValue -= UnityEngine.Random.Range(redMin, redMax);
                 orangeValue = 0;
-
             }
             if (redValue <= 0 && !hasRotated)
             {
@@ -91,19 +87,17 @@ public class EnemyBehaviour : MonoBehaviour
         float distance = Vector3.Distance(transform.position, rb.position);
         if (distance <= 3)
         {
-            if (Input.GetKeyUp(KeyCode.H) && transformCount == 3)
+            if (Input.GetKeyUp(KeyCode.E))
             {
                 if (gm._naxolin >= 1)
                 {
                     transformCount -= 2;
-                    // Mathf.Clamp(transformCount, 0, 3);
                     gm.ScoreModifier(1);
                     isHealed = true;
                     gm._naxolin--;
                     gm.ObjectiveChanger(true);
                     isDead = false;
                     lastForm.transform.rotation = Quaternion.Euler(0, 0, 0);
-
                 }
             }
         }
@@ -114,13 +108,15 @@ public class EnemyBehaviour : MonoBehaviour
         lastForm.transform.rotation = Quaternion.Euler(-zDegree, 0, zDegree);
         if (isDead)
         {
-            _animation.GetComponentInChildren<Animator>().enabled = false;
+            if (_animation != null)
+            {
+                _animation.GetComponentInChildren<Animator>().enabled = false;
+            }
             Debug.Log("dead disable animator");
             if (enemyScript != null)
             {
                 gameObject.GetComponent<NavMeshAgent>().enabled = false;
                 Debug.Log("die");
-
             }
         }
     }
@@ -137,19 +133,27 @@ public class EnemyBehaviour : MonoBehaviour
             // MaterialIndexReset();
             //  capsuleRenderer.material = newMaterial[materialIndex + 1];
         }
+        else if (transformCount == 3)
+        {
+            ReviveEnemy();
+        }
     }
     public void EnemyAudioText()
     {
         float distance = Vector3.Distance(transform.position, rb.position);
         float volume = 1f - (distance / maxHearDistance);
         volume = Mathf.Clamp01(volume);
-        dialogueAudio.volume = volume;
-        if (!hasPlayed)
+        if (dialogueAudio != null)
         {
-            if (!dialogueAudio.isPlaying)
+            dialogueAudio.volume = volume;
+
+            if (!hasPlayed)
             {
-                dialogueAudio.Play();
-                hasPlayed = true;
+                if (!dialogueAudio.isPlaying)
+                {
+                    dialogueAudio.Play();
+                    hasPlayed = true;
+                }
             }
         }
     }

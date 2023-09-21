@@ -15,7 +15,7 @@ public class EnemyDialouge : MonoBehaviour
     private bool hasDialougeStarted;
     public GameObject dialougeBox;
     private EnemyBehaviour enemyBehaviour;
-    public float maxSeeDistance = 3f;
+    public static float maxSeeDistance = 2f;
     public TextMeshProUGUI pressToTalk;
     public TextMeshProUGUI dialougeText;
     SC_FPSController playerControl;
@@ -44,13 +44,33 @@ public class EnemyDialouge : MonoBehaviour
         enemyScript = GetComponent<EnemyScript>();
         playerControl = FindAnyObjectByType<SC_FPSController>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         ToggleButtonsVisibility();
         StopDuringTalk();
         InteractiveDistance();
+
+    }
+    void DialougeWithTagged(string valueString)
+    {
+        if (gameObject.CompareTag(valueString))
+        {
+            HandleDialogueInteraction();
+        }
+    }
+    void HandleDialogueInteraction()
+    {
+        if (!hasTalked)
+        {
+            hasTalked = true;
+            isTalking = true;
+            Debug.Log("is talking?");
+        }
+        if (Input.GetMouseButtonUp(0) && !isTyping)
+        {
+            NextLine();
+            Debug.Log("next line");
+        }
     }
     public void InteractiveDistance()
     {
@@ -58,23 +78,28 @@ public class EnemyDialouge : MonoBehaviour
         //  Debug.Log(distance);
         if (distance <= maxSeeDistance)
         {
-            Debug.Log("distance check");
             PresstoTalk();
             enemyBehaviour.ReviveEnemy();
             if (!enemyBehaviour._isDead())
             {
-                Debug.Log("is dead?");
-                enemyBehaviour.EnemyAudioText();
-                if (Input.GetMouseButtonUp(0) && !isTyping)
+                if (GameManager.gmInstance.currentObjective == GameManager.gmInstance.objectives[2] || GameManager.gmInstance.currentObjective == GameManager.gmInstance.objectives[3])
                 {
-                    NextLine();
-                    Debug.Log("next line");
+                    DialougeWithTagged("friend");
                 }
-                if (!hasTalked)
+                enemyBehaviour.EnemyAudioText();
+                if (Input.GetKeyUp(KeyCode.E))
                 {
-                    hasTalked = true;
-                    isTalking = true;
-                    Debug.Log("is talking?");
+                    if (GameManager.gmInstance.currentObjective == GameManager.gmInstance.objectives[2])
+                    {
+                        currentLines = GetLinesForChoice1();
+                        HandleDialogueInteraction();
+                    }
+                    else if (GameManager.gmInstance.currentObjective == GameManager.gmInstance.objectives[3])
+                    {
+                        currentLines = GetLinesForChoice2();
+                        HandleDialogueInteraction();
+                    }
+
                 }
             }
             //if (enemyBehaviour._isHealed())
@@ -85,7 +110,12 @@ public class EnemyDialouge : MonoBehaviour
             //}
         }
         else
-        { if (pressToTalk != null) { pressToTalk.enabled = false; } }
+        {
+            if (pressToTalk != null)
+            {
+                pressToTalk.enabled = false;
+            }
+        }
     }
     public string[] OriginalLines()
     {
@@ -104,7 +134,6 @@ public class EnemyDialouge : MonoBehaviour
         dialogueIndex = 0;
         hasDialougeStarted = true;
         StartCoroutine(TypeLine());
-        Debug.Log("StartDialuige");
     }
     public void NextLine()
     {
@@ -138,11 +167,13 @@ public class EnemyDialouge : MonoBehaviour
                 ActiveObject(false);
                 _isTalking = false;
                 playerControl.triggerNpc = false;
-                if (!enemyBehaviour._isDead())
+                if (!enemyBehaviour._isDead() && enemyBehaviour != null)
                 {
-                    enemyScript.UpdateDestination();
+                    if (enemyScript != null)
+                    {
+                        enemyScript.UpdateDestination();
+                    }
                 }
-
             }
         }
     }
@@ -151,15 +182,18 @@ public class EnemyDialouge : MonoBehaviour
         dialougeBox.gameObject.SetActive(activate);
         if (activate == true)
         {
+            Debug.Log("dialouge active true");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             if (!hasDialougeStarted)
             {
+                Debug.Log("startdialouge");
                 StartDialogue();
             }
         }
         else
         {
+            Debug.Log("dialouge active false");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -172,7 +206,10 @@ public class EnemyDialouge : MonoBehaviour
         }
         if (currentLines.SequenceEqual(OriginalLines()))
         {
-            StartCoroutine(EndDialouge());
+            if (isTalking)
+            {
+                StartCoroutine(EndDialouge());
+            }
             if (dialogueScript != null)
             {
                 dialogueScript.ButtonOnOff(false);
@@ -199,15 +236,16 @@ public class EnemyDialouge : MonoBehaviour
     {
         if (isTalking)
         {
-            enemyScript.MovementControl(transform.position);
+            if (enemyScript != null)
+            {
+                enemyScript.MovementControl(transform.position);
+            }
             ActiveObject(true);
-            // animator.speed = 0;
+            playerControl.enabled = false;
         }
-        else if (!isTalking && !enemyBehaviour._isDead())
+        else
         {
-            //    //enemyScript.UpdateDestination();
-            //    Debug.Log("Updates the movement if not dead or talk");
-            // animator.speed = 1f;
+            playerControl.enabled = true;
         }
     }
     void PresstoTalk()
@@ -219,7 +257,7 @@ public class EnemyDialouge : MonoBehaviour
                 pressToTalk.enabled = true;
             }
         }
-        if (enemyBehaviour._isDead())
+        if (enemyBehaviour._isDead() && enemyBehaviour != null)
         {
             if (!enemyBehaviour._isHealed())
             {

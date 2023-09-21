@@ -11,6 +11,7 @@ TagManager:
   - AidKit
   - trigger
   - Dealer
+  - friend
   layers:
   - Default
   - TransparentFX
