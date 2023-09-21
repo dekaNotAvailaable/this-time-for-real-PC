@@ -34,16 +34,21 @@ public class FirstAid : MonoBehaviour
         {
             //aidsearch.SetActive(false);
         }
-        if (text == true && Input.GetKeyUp("e"))
+        if (text == true)
+        {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                flopping = !flopping;
+            }
+        }
+        if (flopping == true)
         {
             tutorialaidkit.SetActive(true);
-            Debug.Log("flopping");
-            flopping = !flopping;
+            //saidsearch.SetActive(false);
         }
-        if (flopping == true && Input.GetKeyUp("e"))
+        else
         {
             tutorialaidkit.SetActive(false);
-            //saidsearch.SetActive(false);
         }
 
 

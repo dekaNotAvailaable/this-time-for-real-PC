@@ -68,11 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16066a029fa2607419c275011cf683ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoitns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  wayPoitns: []
 --- !u!1001 &8827644219323068162
 PrefabInstance:
   m_ObjectHideFlags: 0
