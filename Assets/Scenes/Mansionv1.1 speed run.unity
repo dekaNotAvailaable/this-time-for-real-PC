@@ -36123,7 +36123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1265991694}
-  duration: 300
+  duration: 60
 --- !u!1001 &1266486942
 PrefabInstance:
   m_ObjectHideFlags: 0
