@@ -24,7 +24,7 @@ public class SceneChange : MonoBehaviour
         {
             Debug.Log("quit");
             Application.Quit();
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
