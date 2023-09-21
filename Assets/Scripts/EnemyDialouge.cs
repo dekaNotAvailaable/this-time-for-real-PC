@@ -65,7 +65,7 @@ public class EnemyDialouge : MonoBehaviour
             {
                 Debug.Log("is dead?");
                 enemyBehaviour.EnemyAudioText();
-                if (Input.GetMouseButtonUp(1) && !isTyping)
+                if (Input.GetMouseButtonUp(0) && !isTyping)
                 {
                     NextLine();
                     Debug.Log("next line");
