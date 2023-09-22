@@ -287,7 +287,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/StreamingAssets/Comic_Panel_1_Yes_Disabled.mp4
+          m_StringArgument: Comic_Panel_1_Yes_Disabled.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &591661113
@@ -554,7 +554,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/StreamingAssets/Comic_Panel_2_REVISED_FIX.mp4
+          m_StringArgument: Comic_Panel_2_REVISED_FIX.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &626529301
@@ -1207,7 +1207,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/StreamingAssets/Comic_Panel_2_REVISED_FIX.mp4
+          m_StringArgument: Comic_Panel_2_REVISED_FIX.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1027947887
@@ -1407,7 +1407,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300393645}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 3e547e83cef6b4c4094cd30845444088, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: cc720b59bad874c4792ab108e3cdf937, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1417,15 +1417,15 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 10
+  m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: Assets/StreamingAssets/Comic_Panel_1_REVISED_FIX.mp4
+  m_Url: Application.streamingAssetsPath/Comic_Panel_1_REVISED_FIX.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1832,7 +1832,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/StreamingAssets/Yes_Choice_Footage_REVISED.mp4
+          m_StringArgument: Yes_Choice_Footage_REVISED.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1821144309

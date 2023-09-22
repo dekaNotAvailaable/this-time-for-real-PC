@@ -20506,7 +20506,7 @@ MonoBehaviour:
   yellowMin: 0
   yellowMax: 0
   lastForm: {fileID: 447929341}
-  fisrtForm: {fileID: 0}
+  fisrtForm: {fileID: 664486507}
   maxHearDistance: 10
   dialogueAudio: {fileID: 664486513}
 --- !u!82 &664486513
@@ -20605,6 +20605,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &664486515 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 998067319013773762, guid: 13334851238c5e743806835f564303d9, type: 3}
+  m_PrefabInstance: {fileID: 447929340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &665918256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21751,6 +21756,7 @@ MonoBehaviour:
   wallPreventer: {fileID: 890694061}
   sceneChanger: {fileID: 388104064}
   enemyToControl: {fileID: 664486510}
+  enemyNavMeshAgent: {fileID: 664486515}
 --- !u!114 &693714403
 MonoBehaviour:
   m_ObjectHideFlags: 0

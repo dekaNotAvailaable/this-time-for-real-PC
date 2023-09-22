@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -21,6 +22,6 @@ public class VideoButton : MonoBehaviour
         Debug.Log("button pressed video url" + videoPath);
         videoPath = text;
         videoScript.player.source = VideoSource.Url;
-        videoScript.player.url = Application.streamingAssetsPath + text;
+        videoScript.player.url = Path.Combine(Application.streamingAssetsPath, text);
     }
 }

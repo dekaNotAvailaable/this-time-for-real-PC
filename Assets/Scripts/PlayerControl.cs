@@ -29,7 +29,7 @@ public class SC_FPSController : MonoBehaviour
     public GameObject wallPreventer;
     public SceneChange sceneChanger;
     public Transform enemyToControl;
-    private NavMeshAgent enemyNavMeshAgent;
+    public NavMeshAgent enemyNavMeshAgent;
     void Start()
     {
         if (triggerBox != null)
@@ -44,7 +44,7 @@ public class SC_FPSController : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        if (enemyNavMeshAgent != null)
+        if (enemyNavMeshAgent == null)
         {
             enemyNavMeshAgent = enemyToControl.GetComponent<NavMeshAgent>();
         }
