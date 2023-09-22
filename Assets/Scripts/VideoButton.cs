@@ -21,6 +21,6 @@ public class VideoButton : MonoBehaviour
         Debug.Log("button pressed video url" + videoPath);
         videoPath = text;
         videoScript.player.source = VideoSource.Url;
-        videoScript.player.url = text;
+        videoScript.player.url = Application.streamingAssetsPath + text;
     }
 }
