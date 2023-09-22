@@ -239,6 +239,7 @@ public class EnemyDialouge : MonoBehaviour
             if (enemyScript != null)
             {
                 enemyScript.MovementControl(transform.position);
+                enemyBehaviour.AnimationStop();
             }
             ActiveObject(true);
             playerControl.enabled = false;

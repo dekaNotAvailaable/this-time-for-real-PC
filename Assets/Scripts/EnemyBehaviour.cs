@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     private int transformCount;
     private float zDegree;
     public GameObject lastForm;
+    public GameObject fisrtForm;
     private bool hasRotated;
     private EnemyScript enemyScript;
     private bool isDead;
@@ -34,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Start()
     {
+        lastForm.SetActive(false);
         _navMeshAgent = GetComponent<NavMeshAgent>();
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
@@ -108,16 +110,20 @@ public class EnemyBehaviour : MonoBehaviour
         lastForm.transform.rotation = Quaternion.Euler(-zDegree, 0, zDegree);
         if (isDead)
         {
-            if (_animation != null)
-            {
-                _animation.GetComponentInChildren<Animator>().enabled = false;
-            }
+            AnimationStop();
             Debug.Log("dead disable animator");
             if (enemyScript != null)
             {
                 gameObject.GetComponent<NavMeshAgent>().enabled = false;
                 Debug.Log("die");
             }
+        }
+    }
+    public void AnimationStop()
+    {
+        if (_animation != null)
+        {
+            _animation.GetComponentInChildren<Animator>().enabled = false;
         }
     }
     void EnemyTransform()
@@ -136,6 +142,8 @@ public class EnemyBehaviour : MonoBehaviour
         else if (transformCount == 3)
         {
             ReviveEnemy();
+            lastForm.SetActive(true);
+            fisrtForm.SetActive(false);
         }
     }
     public void EnemyAudioText()
