@@ -41,6 +41,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             lastForm.SetActive(false);
         }
+        if (fisrtForm == null)
+        {
+            fisrtForm = null;
+        }
         _navMeshAgent = GetComponent<NavMeshAgent>();
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
