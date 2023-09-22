@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Start()
     {
-        if (lastForm != null)
+        if (fisrtForm != null)
         {
             lastForm.SetActive(false);
         }
@@ -164,9 +164,17 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else if (transformCount == 3)
         {
+            Scene currentScene = SceneManager.GetActiveScene();
             ReviveEnemy();
+            // if (currentScene.name == "Mansionv1.2")
+            // {
+            if (fisrtForm != null)
+            {
+
+                fisrtForm.SetActive(false);
+            }
             lastForm.SetActive(true);
-            fisrtForm.SetActive(false);
+            // }
         }
     }
     public void EnemyAudioText()
