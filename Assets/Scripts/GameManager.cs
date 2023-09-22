@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     private Rigidbody rb;
     private bool isChanged;
     public AudioSource BGM;
+    private int lastScore;
+    public TextMeshProUGUI highScoreText;
     private void Start()
     {
         currentObjective = objectives[objectiveIndex];
@@ -68,6 +71,11 @@ public class GameManager : MonoBehaviour
                 BGM.volume = 0.5f;
             }
         }
+        // else if (sceneName == "High Score")
+        // {
+        highScoreText.text = string.Format(";", lastScore);
+        Debug.Log("aasasasdasdasdasd");
+        // }
     }
     private void Update()
     {
@@ -75,7 +83,11 @@ public class GameManager : MonoBehaviour
         //{
         //    ObjectiveChanger(true);
         //    isChanged = true;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
         //}
+
+        lastScore = Score;
     }
     public int _PlayerStamina()
     {

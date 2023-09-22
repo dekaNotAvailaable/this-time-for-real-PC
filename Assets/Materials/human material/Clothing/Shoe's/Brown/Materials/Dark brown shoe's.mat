@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pale Skin Arm 2
+  m_Name: Dark brown shoe's
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -22,16 +22,16 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Smoothness
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 514f01aa10df2cc4bb6f98aa82cba156, type: 3}
+        m_Texture: {fileID: 2800000, guid: f37ebed7671605540a9ff20caa548c45, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: c39847014e8dfdd4a97e1144aedb389d, type: 3}
+        m_Texture: {fileID: 2800000, guid: c5f05509044ab7b41a7aa64bcebe99c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -51,11 +51,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 514f01aa10df2cc4bb6f98aa82cba156, type: 3}
+        m_Texture: {fileID: 2800000, guid: f37ebed7671605540a9ff20caa548c45, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 0bfb22739fe57d5458617bcbcfc03edf, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa2c64b7ecffe7548ba4e1331ff9fde6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -115,12 +115,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7836715, g: 0.92363286, b: 0.9811321, a: 1}
-    - _Color: {r: 0.7836715, g: 0.92363286, b: 0.9811321, a: 1}
+    - _BaseColor: {r: 0.37964275, g: 0.44379002, b: 0.6320754, a: 1}
+    - _Color: {r: 0.37964275, g: 0.44379002, b: 0.6320754, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8184357485584767000
+--- !u!114 &1188078280218135025
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -35,7 +37,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Start()
     {
-        lastForm.SetActive(false);
+        if (lastForm != null)
+        {
+            lastForm.SetActive(false);
+        }
         _navMeshAgent = GetComponent<NavMeshAgent>();
         rb = FindAnyObjectByType<Rigidbody>();
         timeFollower = Time.time;
@@ -43,6 +48,8 @@ public class EnemyBehaviour : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         enemyScript = GetComponent<EnemyScript>();
         _animation = GetComponentInChildren<Animator>();
+
+
     }
     // Update is called once per frame
     void Update()
@@ -84,6 +91,18 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
+    IEnumerator EnemyDespawn()
+    {
+        if (this != null)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            if (currentScene.name == "Mansionv1.2")
+            {
+                yield return new WaitForSeconds(2);
+                Destroy(lastForm);
+            }
+        }
+    }
     public void ReviveEnemy()
     {
         float distance = Vector3.Distance(transform.position, rb.position);
@@ -102,6 +121,10 @@ public class EnemyBehaviour : MonoBehaviour
                     lastForm.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
+        }
+        if (isHealed)
+        {
+            StartCoroutine(EnemyDespawn());
         }
     }
     private void EnemyDie()

@@ -44,7 +44,10 @@ public class SC_FPSController : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        enemyNavMeshAgent = enemyToControl.GetComponent<NavMeshAgent>();
+        if (enemyNavMeshAgent != null)
+        {
+            enemyNavMeshAgent = enemyToControl.GetComponent<NavMeshAgent>();
+        }
     }
     void Update()
     {

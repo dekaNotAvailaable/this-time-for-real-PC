@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
@@ -26,7 +25,7 @@ public class Timer : MonoBehaviour
         else
         {
             Debug.Log("Timer has reached 0:00");
-            sceneChanger.SceneChanger("Mansionv1.1 speed run");
+            sceneChanger.SceneChanger("High Score");
             elapsedTime = 0f;
         }
     }

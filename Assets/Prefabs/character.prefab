@@ -57,6 +57,7 @@ MonoBehaviour:
   yellowMin: 10000
   yellowMax: 10000
   lastForm: {fileID: 7962430677002215809}
+  fisrtForm: {fileID: 0}
   maxHearDistance: 10
   dialogueAudio: {fileID: 0}
 --- !u!1001 &2289288885211635635
@@ -118,7 +119,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: b9318ffd2091b744781a3d8280f38b2a, type: 2}
+      objectReference: {fileID: 4835078630258379571, guid: 362138c3a8e7e244295d242178f0c343, type: 3}
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -126,7 +127,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 7a7f07cb65d568549b37d4da6d36dcbf, type: 2}
+      objectReference: {fileID: 4835078630258379571, guid: 362138c3a8e7e244295d242178f0c343, type: 3}
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
@@ -138,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[6]
       value: 
-      objectReference: {fileID: 2100000, guid: 7a7f07cb65d568549b37d4da6d36dcbf, type: 2}
+      objectReference: {fileID: 4835078630258379571, guid: 362138c3a8e7e244295d242178f0c343, type: 3}
     - target: {fileID: -7511558181221131132, guid: 36fdc4735b64604459c229c1065c265a, type: 3}
       propertyPath: m_Materials.Array.data[7]
       value: 

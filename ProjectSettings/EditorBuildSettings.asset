@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mansionv1.2.unity
     guid: fb4dc815c09675b4fb1189a33e8cedee
+  - enabled: 1
+    path: Assets/Scenes/High Score.unity
+    guid: e59ca06cf95319c4294aef914cccd2dd
   m_configObjects: {}
