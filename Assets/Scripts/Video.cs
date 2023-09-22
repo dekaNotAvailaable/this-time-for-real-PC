@@ -25,7 +25,7 @@ public class Video : MonoBehaviour
             ButtonWithActiveOrNot(true, 0, true);
             ButtonWithActiveOrNot(true, 1, true);
         }
-        else if (player.url == "Assets/videos/Comic_Scene_2_with_Button (2).mp4")
+        else if (player.url == "Assets/StreamingAssets/Comic_Panel_2_REVISED_FIX.mp4")
         {
             ButtonWithActiveOrNot(false, 0, false);
             ButtonWithActiveOrNot(false, 1, false);
@@ -33,14 +33,14 @@ public class Video : MonoBehaviour
             ButtonWithActiveOrNot(true, 4, true);
 
         }
-        else if (player.url == "Assets/videos/Yes_Choice_Footage.mp4")
+        else if (player.url == "Assets/StreamingAssets/Yes_Choice_Footage_REVISED.mp4")
         {
             ButtonWithActiveOrNot(false, 0, false);
             ButtonWithActiveOrNot(false, 1, false);
             ButtonWithActiveOrNot(true, 2, true);
 
         }
-        else if (player.url == "Assets/videos/Comic_Panel_1_Yes_Disabled.mp4")
+        else if (player.url == "Assets/StreamingAssets/Comic_Panel_1_Yes_Disabled.mp4")
         {
             ButtonWithActiveOrNot(false, 2, false);
             ButtonWithActiveOrNot(true, 3, true);

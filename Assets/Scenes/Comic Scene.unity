@@ -287,7 +287,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Panel_1_Yes_Disabled.mp4
+          m_StringArgument: Assets/StreamingAssets/Comic_Panel_1_Yes_Disabled.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &591661113
@@ -554,7 +554,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button (2).mp4
+          m_StringArgument: Assets/StreamingAssets/Comic_Panel_2_REVISED_FIX.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &626529301
@@ -1207,7 +1207,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Comic_Scene_2_with_Button (2).mp4
+          m_StringArgument: Assets/StreamingAssets/Comic_Panel_2_REVISED_FIX.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1027947887
@@ -1276,7 +1276,7 @@ RectTransform:
   m_GameObject: {fileID: 1168371913}
   m_LocalRotation: {x: -0, y: -0, z: -0.0059257727, w: 0.9999824}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.877667, y: 1.7485664, z: 1}
+  m_LocalScale: {x: 7.2189155, y: 2.724791, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1786257629}
@@ -1284,7 +1284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.679}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -297.5, y: 78.6}
+  m_AnchoredPosition: {x: -691, y: 145}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168371915
@@ -1832,7 +1832,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assets/videos/Yes_Choice_Footage.mp4
+          m_StringArgument: Assets/StreamingAssets/Yes_Choice_Footage_REVISED.mp4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1821144309

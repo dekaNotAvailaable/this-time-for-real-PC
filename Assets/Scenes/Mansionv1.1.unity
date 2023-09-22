@@ -20064,7 +20064,7 @@ MonoBehaviour:
   yellowMin: 10000
   yellowMax: 10000
   lastForm: {fileID: 648023937}
-  fisrtForm: {fileID: 648023937}
+  fisrtForm: {fileID: 0}
   maxHearDistance: 10
   dialogueAudio: {fileID: 0}
 --- !u!4 &648023939
@@ -61402,7 +61402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674940128117029303, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.47
+      value: 1.105
       objectReference: {fileID: 0}
     - target: {fileID: 5674940128117029303, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61437,9 +61437,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164634389720244873, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
-      propertyPath: fisrtForm
+      propertyPath: lastForm
       value: 
       objectReference: {fileID: 986056499}
+    - target: {fileID: 6164634389720244873, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
+      propertyPath: fisrtForm
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7962430677002215809, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
       propertyPath: m_Name
       value: character
