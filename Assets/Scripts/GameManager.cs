@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         }
         else if (sceneName == "Mansionv1.2")
         {
+            objectiveIndex = 0;
             naxolin = 20;
             if (BGM != null)
             {
@@ -71,23 +72,6 @@ public class GameManager : MonoBehaviour
                 BGM.volume = 0.5f;
             }
         }
-        // else if (sceneName == "High Score")
-        // {
-        highScoreText.text = string.Format(";", lastScore);
-        Debug.Log("aasasasdasdasdasd");
-        // }
-    }
-    private void Update()
-    {
-        //if (naxolin >= 1)
-        //{
-        //    ObjectiveChanger(true);
-        //    isChanged = true;
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        //}
-
-        lastScore = Score;
     }
     public int _PlayerStamina()
     {

@@ -52,8 +52,6 @@ public class EnemyBehaviour : MonoBehaviour
         gm = FindAnyObjectByType<GameManager>();
         enemyScript = GetComponent<EnemyScript>();
         _animation = GetComponentInChildren<Animator>();
-
-
     }
     // Update is called once per frame
     void Update()
