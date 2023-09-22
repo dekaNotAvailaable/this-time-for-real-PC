@@ -1143,7 +1143,7 @@ RectTransform:
   m_GameObject: {fileID: 1027947884}
   m_LocalRotation: {x: -0, y: -0, z: 0.013747088, w: 0.9999055}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9467664, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 9.663331, y: 4.3339987, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 693559194}
@@ -1151,7 +1151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.575}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -299.9, y: 95.2}
+  m_AnchoredPosition: {x: -958, y: 246}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027947886
@@ -1425,7 +1425,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: Assets/videos/Comic_Panel_1 1.mp4
+  m_Url: Assets/StreamingAssets/Comic_Panel_1_REVISED_FIX.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1768,7 +1768,7 @@ RectTransform:
   m_GameObject: {fileID: 1821144306}
   m_LocalRotation: {x: -0, y: -0, z: 0.01695876, w: 0.99985623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9341059, y: 1.3659424, z: 1}
+  m_LocalScale: {x: 9.936349, y: 4.465129, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1862339028}
@@ -1776,7 +1776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.943}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -301.9, y: 159.9}
+  m_AnchoredPosition: {x: -974, y: 467}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821144308

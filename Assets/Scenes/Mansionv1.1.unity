@@ -20064,7 +20064,7 @@ MonoBehaviour:
   yellowMin: 10000
   yellowMax: 10000
   lastForm: {fileID: 648023937}
-  fisrtForm: {fileID: 0}
+  fisrtForm: {fileID: 648023937}
   maxHearDistance: 10
   dialogueAudio: {fileID: 0}
 --- !u!4 &648023939
@@ -29288,6 +29288,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1887465317666450905, guid: 5fa1a02ec8b0f7149af7f9cff700fdba, type: 3}
   m_PrefabInstance: {fileID: 985969868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &986056499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7962430677002215809, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
+  m_PrefabInstance: {fileID: 6872567747744031929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &986069961
 PrefabInstance:
@@ -61431,6 +61436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6164634389720244873, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
+      propertyPath: fisrtForm
+      value: 
+      objectReference: {fileID: 986056499}
     - target: {fileID: 7962430677002215809, guid: 6bcaf75b9447d244b89e9ce0b13f3364, type: 3}
       propertyPath: m_Name
       value: character

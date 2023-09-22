@@ -124,7 +124,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if (isHealed)
         {
-            StartCoroutine(EnemyDespawn());
+            //  StartCoroutine(EnemyDespawn());
         }
     }
     private void EnemyDie()
